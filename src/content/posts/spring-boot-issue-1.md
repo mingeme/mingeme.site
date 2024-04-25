@@ -1,7 +1,6 @@
 ---
-layout: ../../layouts/MarkdownPostLayout.astro
 title: Spring Boot 中 spring.jpa.open-in-view 使用踩坑
-pubpubDate: 2020-08-26 12:25:16
+pubDate: 2020-08-26 12:25:16
 ---
 
 本篇记录我在使用Spring JPA中遇到的问题。

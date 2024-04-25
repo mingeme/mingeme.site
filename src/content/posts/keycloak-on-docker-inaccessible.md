@@ -1,5 +1,4 @@
 ---
-layout: ../../layouts/MarkdownPostLayout.astro
 title: Keycloak on Docker 安装完后无法访问https://＜domain＞/auth/admin
 pubDate: 2021-04-08 10:53:53
 ---

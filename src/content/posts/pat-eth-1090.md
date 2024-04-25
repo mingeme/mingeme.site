@@ -1,5 +1,4 @@
 ---
-layout: ../../layouts/MarkdownPostLayout.astro
 title: PAT 乙级 1090 C语言
 pubDate: 2018-10-09 22:20:14
 ---
