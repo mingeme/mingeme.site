@@ -1,0 +1,21 @@
+---
+import { clsx } from 'clsx';
+const { title, url } = Astro.props;
+
+const { pathname } = Astro.url;
+const subpath = pathname.match(/[^\/]+/g);
+const isActive = url === pathname || url === '/' + subpath?.[0];
+---
+
+<a href={url} rel="noopener noreferrer" class="no-underline">
+  <span
+    class={clsx(
+      'inline-block rounded px-2 py-1 font-medium text-gray-900 dark:text-gray-100 sm:px-3 sm:py-2',
+      isActive
+        ? 'bg-gray-200 dark:bg-gray-700'
+        : 'hover:bg-gray-200 dark:hover:bg-gray-700',
+    )}
+  >
+    {title}
+  </span>
+</a>

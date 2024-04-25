@@ -1,9 +1,9 @@
 ---
-
+import Link from './Link.astro';
 ---
 
-<div>
-  <a href="/">首页</a>
-  <a href="/about/">关于</a>
-  <a href="/blog/">博客</a>
+<div class="space-x-2 sm:block">
+  <Link url="/" title="首页" />
+  <Link url="/about" title="关于" />
+  <Link url="/blog" title="博客" />
 </div>

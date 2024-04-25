@@ -11,7 +11,7 @@ const pageTitle = '我的 Astro 学习博客';
   <ul>
     {
       allPosts.map((post) => (
-        <BlogPost url={`/posts/${post.slug}/`} title={post.data.title} />
+        <BlogPost url={`/posts/${post.slug}`} title={post.data.title} />
       ))
     }
   </ul>

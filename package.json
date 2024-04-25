@@ -14,6 +14,7 @@
   "dependencies": {
     "@astrojs/check": "^0.5.10",
     "astro": "^4.6.4",
+    "clsx": "^2.1.1",
     "typescript": "^5.4.5"
   },
   "devDependencies": {
@@ -22,6 +23,7 @@
     "eslint": "^9.1.1",
     "eslint-plugin-astro": "^0.34.0",
     "eslint-plugin-format": "^0.1.1",
-    "prettier-plugin-astro": "^0.13.0"
+    "prettier-plugin-astro": "^0.13.0",
+    "unocss": "^0.59.4"
   }
 }
