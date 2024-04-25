@@ -10,7 +10,9 @@ docker run -p 8080:8080 -e KEYCLOAK_USER=admin KEYCLOAK_PASSWORD=admin quay.io/k
 ```
 
 问题如图所示
-![在这里插入图片描述](https://img-blog.csdnimg.cn/20210408103916328.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3hpYW9oZTAwaGFwcHk=,size_16,color_FFFFFF,t_70#pic_center)
+
+![20210408103916328.png](https://s2.loli.net/2024/04/25/YbgQwF7L4vszHSh.png)
+
 提示 keycloak.js 无法通过http访问，通过 Keycloak 官方论坛查阅大量帖子得出解决方案。
 在启动 Docker 容器时添加 `-e PROXY_ADDRESS_FORWARDING=true`参数。
 完整命令如下：
