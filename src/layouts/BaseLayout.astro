@@ -1,45 +1,39 @@
 ---
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import '../styles/base.css';
 
 const { pageTitle } = Astro.props;
 ---
 
-<html lang="zh-cn">
+<html lang="zh">
   <head>
     <meta charset="utf-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
+    <meta name="theme-color" content="" />
     <title>{pageTitle}</title>
+    <script is:inline src="/toggle-theme.js"></script>
   </head>
-  <body>
+  <body class="my-0 mx-auto w-full line-height-6">
     <Header />
     <slot />
     <Footer />
   </body>
+
+  <style>
+    html {
+      font-family: sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    h1 {
+      margin: 1rem 0;
+      font-size: 2.5rem;
+    }
+  </style>
 </html>
-
-<style>
-  html {
-    background-color: #f1f5f9;
-    font-family: sans-serif;
-  }
-
-  body {
-    margin: 0 auto;
-    width: 100%;
-    max-width: 80ch;
-    padding: 1rem;
-    line-height: 1.5;
-  }
-
-  * {
-    box-sizing: border-box;
-  }
-
-  h1 {
-    margin: 1rem 0;
-    font-size: 2.5rem;
-  }
-</style>

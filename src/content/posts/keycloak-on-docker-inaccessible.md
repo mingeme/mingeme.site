@@ -1,6 +1,9 @@
 ---
 title: Keycloak on Docker 安装完后无法访问https://＜domain＞/auth/admin
-pubDate: 2021-04-08 10:53:53
+pubDate: '2021-04-08T10:53:53+08:00'
+tags:
+  - docker
+  - keyclock
 ---
 
 首先按照[官方文档](https://www.keycloak.org/getting-started/getting-started-docker)通过 Docker 安装 Keyclak
