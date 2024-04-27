@@ -2,7 +2,7 @@
 import Badge from './Badge.astro';
 import moment from 'moment';
 
-const { title, description, url, pubDate, tags } = Astro.props;
+const { url, frontmatter } = Astro.props;
 ---
 
 <div
@@ -13,16 +13,16 @@ const { title, description, url, pubDate, tags } = Astro.props;
       <h2
         class="text-xl font-bold text-gray-900 group-hover:text-gray-700 dark:text-white dark:group-hover:text-gray-300"
       >
-        {title}
+        {frontmatter.title}
       </h2>
       <div class="flex items-center space-x-2 mt-2">
-        {tags?.map((tag) => <Badge>{tag}</Badge>)}
+        {frontmatter.tags.map((tag: string) => <Badge>{tag}</Badge>)}
       </div>
       <p class="mt-2 text-gray-600 dark:text-gray-400">
-        {description}
+        {frontmatter.description}
       </p>
       <div class="mt-4 text-sm text-gray-500 dark:text-gray-400">
-        发布于 {moment(pubDate).format('ll')}
+        发布于 {moment(frontmatter.pubDate).format('ll')}
       </div>
     </div>
   </a>
