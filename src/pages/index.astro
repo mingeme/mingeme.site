@@ -27,7 +27,7 @@ const allPosts = (await getCollection('posts')).sort((a, b) => {
       </div>
     </main>
     <aside>
-      <div class="rounded-lg bg-gray-100 p-6 shadow-lg dark:bg-gray-800">
+      <div class="rounded-lg p-6 shadow-lg dark:bg-gray-800">
         <h3 class="text-lg font-bold text-gray-900 dark:text-white">归档</h3>
         <nav class="mt-4 space-y-2">
           <a
@@ -50,7 +50,7 @@ const allPosts = (await getCollection('posts')).sort((a, b) => {
           </a>
         </nav>
       </div>
-      <div class="rounded-lg bg-gray-100 mt-8 p-6 shadow-lg dark:bg-gray-800">
+      <div class="rounded-lg mt-8 p-6 shadow-lg dark:bg-gray-800">
         <h3 class="text-lg font-bold text-gray-900 dark:text-white">标签</h3>
         <div class="mt-4 flex flex-wrap gap-2">
           <Badge>Design</Badge>
