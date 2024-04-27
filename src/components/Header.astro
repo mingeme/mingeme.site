@@ -1,6 +1,5 @@
 ---
 import Link from './Link.astro';
-import Navigation from './Navigation.astro';
 
 const links = [
   {
@@ -37,7 +36,7 @@ const links = [
           <div
             id="theme-btn"
             aria-label="Toggle dark mode"
-            class="hover:cursor-pointer hover:bg-gray-700 focus:ring-2 focus:ring-gray-600 focus:outline-none rounded-full p-2 transition-colors"
+            class="hover:cursor-pointer hover:bg-gray-700 dark:hover:bg-white focus:ring-2 focus:ring-gray-600 focus:outline-none rounded-full p-2 transition-colors"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -55,7 +54,7 @@ const links = [
             </svg>
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              class="dark:block light:hidden h-5 w-5 text-gray-400 hover:text-white"
+              class="dark:block light:hidden h-5 w-5 text-gray-400"
               width="24"
               height="24"
               viewBox="0 0 24 24"
