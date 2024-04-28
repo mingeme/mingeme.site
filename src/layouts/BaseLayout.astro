@@ -16,7 +16,7 @@ const { pageTitle } = Astro.props;
     <title>{pageTitle}</title>
     <script is:inline src="/toggle-theme.js"></script>
   </head>
-  <body class="my-0 mx-auto w-full line-height-6 dark:bg-gray-900">
+  <body class="my-0 mx-auto w-full line-height-6">
     <Header />
     <slot />
     <Footer />
@@ -25,6 +25,10 @@ const { pageTitle } = Astro.props;
   <style>
     html {
       font-family: sans-serif;
+    }
+
+    html.dark {
+      background-color: rgb(34 34 34 / 0.75);
     }
 
     * {
