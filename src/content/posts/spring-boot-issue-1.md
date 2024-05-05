@@ -44,4 +44,4 @@ public class DemoApplication {
 疑问：
 
 - registrationBean.setOrder(5)，order为什么是5
-- OpenSessionInViewInterceptor & OpenSessionInViewFilter, OpenEntityManagerInViewInterceptor`&`OpenEntityManagerInViewFilter 这几个类的区别以及使的的场景
+- OpenSessionInViewInterceptor & OpenSessionInViewFilter, OpenEntityManagerInViewInterceptor & OpenEntityManagerInViewFilter 这几个类的区别以及使用的场景
