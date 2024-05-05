@@ -1,7 +1,6 @@
 ---
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
-import '../styles/base.css';
 
 const { pageTitle } = Astro.props;
 ---
@@ -16,13 +15,17 @@ const { pageTitle } = Astro.props;
     <title>{pageTitle}</title>
     <script is:inline src="/toggle-theme.js"></script>
   </head>
-  <body class="my-0 mx-auto w-full line-height-6">
+  <body
+    class="my-0 mx-auto min-h-100vh line-height-6 flex flex-col dark:bg-dark/75"
+  >
     <Header />
-    <slot />
+    <main class="flex-1 dark:bg-dark/75">
+      <slot />
+    </main>
     <Footer />
   </body>
 
-  <style>
+  <style is:global>
     html {
       font-family: sans-serif;
     }
@@ -35,9 +38,8 @@ const { pageTitle } = Astro.props;
       box-sizing: border-box;
     }
 
-    h1 {
-      margin: 1rem 0;
-      font-size: 2.5rem;
+    a {
+      text-decoration: none;
     }
   </style>
 </html>

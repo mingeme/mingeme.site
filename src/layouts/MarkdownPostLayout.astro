@@ -1,10 +1,85 @@
 ---
+import moment from 'moment';
 import BaseLayout from './BaseLayout.astro';
 
 const { frontmatter } = Astro.props;
 ---
 
 <BaseLayout pageTitle={frontmatter.title}>
-  <p>Written by mingeme</p>
-  <slot />
+  <div
+    class="text-base prose dark:prose-invert prose-truegray xl:text-xl mx-auto"
+  >
+    <h1>{frontmatter.title}</h1>
+    <div class="flex items-center my-2 opacity-80 space-x-2">
+      <div class="i-carbon-calendar"></div>
+      <span class="text-base">
+        <time datetime={frontmatter.pubDate}>
+          {moment(frontmatter.pubDate).locale('zh-cn').format('ll')}
+        </time>
+        <span aria-hidden="true"> | </span>
+        <span class="text-nowrap">
+          {moment(frontmatter.pubDate).locale('zh-cn').format('HH:mm:ss')}
+        </span>
+      </span>
+    </div>
+    <article>
+      <slot />
+    </article>
+  </div>
 </BaseLayout>
+
+<script is:inline>
+  /** Attaches copy buttons to code blocks in the document,
+   * allowing users to copy code easily. */
+  function attachCopyButtons() {
+    let copyButtonLabel = '复制';
+    let codeBlocks = Array.from(document.querySelectorAll('pre'));
+
+    for (let codeBlock of codeBlocks) {
+      let wrapper = document.createElement('div');
+      wrapper.style.position = 'relative';
+
+      let copyButton = document.createElement('button');
+      copyButton.className =
+        'copy-code absolute right-3 -top-3 rounded bg-white text-gray-900 dark:bg-dark/75 dark:text-white px-2 py-1 text-xs leading-4  font-medium';
+      copyButton.innerHTML = copyButtonLabel;
+      codeBlock.setAttribute('tabindex', '0');
+      codeBlock.appendChild(copyButton);
+
+      // wrap codebock with relative parent element
+      codeBlock.parentNode.insertBefore(wrapper, codeBlock);
+      wrapper.appendChild(codeBlock);
+
+      copyButton.addEventListener('click', async () => {
+        await copyCode(codeBlock, copyButton);
+      });
+    }
+
+    async function copyCode(block, button) {
+      let code = block.querySelector('code');
+      let text = code.innerText;
+
+      await navigator.clipboard.writeText(text);
+
+      // visual feedback that task is completed
+      button.innerText = '已复制';
+
+      setTimeout(() => {
+        button.innerText = copyButtonLabel;
+      }, 700);
+    }
+  }
+  attachCopyButtons();
+  document.addEventListener('astro:after-swap', attachCopyButtons);
+
+  /** Scrolls the document to the top when
+   * the "Back to Top" button is clicked. */
+  function backToTop() {
+    document.querySelector('#back-to-top')?.addEventListener('click', () => {
+      document.body.scrollTop = 0; // For Safari
+      document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+    });
+  }
+  backToTop();
+  document.addEventListener('astro:after-swap', backToTop);
+</script>
