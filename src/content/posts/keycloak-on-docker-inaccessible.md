@@ -6,7 +6,7 @@ tags:
   - keyclock
 ---
 
-首先按照[官方文档](https://www.keycloak.org/getting-started/getting-started-docker)通过 Docker 安装 Keyclak
+首先按照[官方文档](https://www.keycloak.org/getting-started/getting-started-docker)通过 Docker 安装 Keyclock
 
 ```shell
 docker run -p 8080:8080 -e KEYCLOAK_USER=admin KEYCLOAK_PASSWORD=admin quay.io/keycloak/keycloak:12.0.4
