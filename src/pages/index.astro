@@ -1,16 +1,59 @@
 ---
+import { getCollection } from 'astro:content';
+import PostCard from '../components/PostCard.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Badge from '../components/Badge.astro';
 
+const pageTitle = 'astro';
+
+const allPosts = (await getCollection('posts')).sort((a, b) => {
+  const d1 = new Date(a.data.pubDate);
+  const d2 = new Date(b.data.pubDate);
+  return d2.getTime() - d1.getTime();
+});
+
+const allYears = [
+  ...new Set(allPosts.map((a) => new Date(a.data.pubDate).getFullYear())),
+];
+
+const allTags = [...new Set(allPosts.map((a) => a.data.tags).flat(Infinity))];
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<BaseLayout pageTitle={pageTitle}>
+  <div
+    class="container h-full mx-auto grid grid-cols-1 gap-8 px-4 py-12 md:grid-cols-3 md:gap-12 md:px-6 lg:px-8 lg:py-16 dark:bg-dark/75"
+  >
+    <div class="col-span-2">
+      <div class="grid grid-cols-1 gap-8 sm:grid-cols-2">
+        {
+          allPosts.map((post) => (
+            <PostCard url={post.slug} frontmatter={post.data} />
+          ))
+        }
+      </div>
+    </div>
+    <aside>
+      <div class="rounded-lg p-6 shadow-lg dark:bg-dark/75">
+        <h3 class="text-lg font-bold text-gray-900 dark:text-white">归档</h3>
+        <nav class="mt-4 space-y-2">
+          {
+            allYears.map((year) => (
+              <a
+                class="block text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-200"
+                href={`/archives/${year}`}
+              >
+                {year}
+              </a>
+            ))
+          }
+        </nav>
+      </div>
+      <div class="rounded-lg mt-8 p-6 shadow-lg dark:bg-dark/75">
+        <h3 class="text-lg font-bold text-gray-900 dark:text-white">标签</h3>
+        <div class="mt-4 flex flex-wrap gap-2">
+          {allTags.map((tag) => <Badge>{tag}</Badge>)}
+        </div>
+      </div>
+    </aside>
+  </div>
+</BaseLayout>

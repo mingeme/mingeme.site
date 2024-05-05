@@ -1,0 +1,29 @@
+---
+import Badge from './Badge.astro';
+import moment from 'moment';
+
+const { url, frontmatter } = Astro.props;
+---
+
+<div
+  class="group overflow-hidden rounded-lg shadow-lg transition-all duration-300 hover:shadow-xl dark:bg-dark/75"
+>
+  <a href={`/posts/${url}`}>
+    <div class="p-4">
+      <h2
+        class="text-xl font-bold text-gray-900 group-hover:text-gray-700 dark:text-white dark:group-hover:text-gray-300"
+      >
+        {frontmatter.title}
+      </h2>
+      <div class="flex items-center space-x-2 mt-2">
+        {frontmatter.tags.map((tag: string) => <Badge>{tag}</Badge>)}
+      </div>
+      <p class="mt-2 text-gray-600 dark:text-gray-400">
+        {frontmatter.description}
+      </p>
+      <div class="mt-4 text-sm text-gray-500 dark:text-gray-400">
+        发布于 {moment(frontmatter.pubDate).locale('zh-cn').format('ll')}
+      </div>
+    </div>
+  </a>
+</div>

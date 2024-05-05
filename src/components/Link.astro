@@ -1,0 +1,15 @@
+---
+const { title, url } = Astro.props;
+
+const { pathname } = Astro.url;
+const subpath = pathname.match(/[^\/]+/g);
+const isActive = url === pathname || url === '/' + subpath?.[0];
+---
+
+<a
+  href={url}
+  rel="noopener noreferrer"
+  class="px-2 text-gray-400 hover:text-black dark:hover:text-white transition-colors"
+>
+  {title}
+</a>
