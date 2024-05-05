@@ -3,10 +3,10 @@ title: Keycloak on Docker 安装完后无法访问https://＜domain＞/auth/admi
 pubDate: '2021-04-08T10:53:53+08:00'
 tags:
   - docker
-  - keyclock
+  - keycloak
 ---
 
-首先按照[官方文档](https://www.keycloak.org/getting-started/getting-started-docker)通过 Docker 安装 Keyclock
+首先按照[官方文档](https://www.keycloak.org/getting-started/getting-started-docker)通过 Docker 安装 keycloak
 
 ```shell
 docker run -p 8080:8080 -e KEYCLOAK_USER=admin KEYCLOAK_PASSWORD=admin quay.io/keycloak/keycloak:12.0.4
