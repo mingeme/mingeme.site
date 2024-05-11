@@ -30,6 +30,9 @@ importers:
       '@antfu/eslint-config':
         specifier: ^2.15.0
         version: 2.15.0(@unocss/eslint-plugin@0.59.4(eslint@9.1.1)(typescript@5.4.5))(@vue/compiler-sfc@3.4.24)(astro-eslint-parser@0.17.0(typescript@5.4.5))(eslint-plugin-astro@0.34.0(eslint@9.1.1)(typescript@5.4.5))(eslint-plugin-format@0.1.1(eslint@9.1.1))(eslint@9.1.1)(prettier-plugin-astro@0.13.0)(svelte@4.2.15)(typescript@5.4.5)
+      '@iconify-json/carbon':
+        specifier: ^1.1.32
+        version: 1.1.32
       '@typescript-eslint/parser':
         specifier: ^7.7.1
         version: 7.7.1(eslint@9.1.1)(typescript@5.4.5)
@@ -517,6 +520,9 @@ packages:
   '@humanwhocodes/retry@0.2.3':
     resolution: {integrity: sha512-X38nUbachlb01YMlvPFojKoiXq+LzZvuSce70KPMPdeM1Rj03k4dR7lDslhbqXn3Ang4EU3+EAmwEAsbrjHW3g==}
     engines: {node: '>=18.18'}
+
+  '@iconify-json/carbon@1.1.32':
+    resolution: {integrity: sha512-9X8wVI7AmcnjTyOdDoCgyNwcFL9lb++nacDS2yLANTc27F4y9Q8pJIfUVsakR4KcGqSSBCyXwEmBDeopeTZFqA==}
 
   '@iconify/types@2.0.0':
     resolution: {integrity: sha512-+wluvCrRhXrhyOmRDJ3q8mux9JkKy5SJ/v8ol2tu4FVjyYvtEzkc/3pK15ET6RKg4b4w4BmTk1+gsCUhf21Ykg==}
@@ -3784,6 +3790,10 @@ snapshots:
   '@humanwhocodes/object-schema@2.0.3': {}
 
   '@humanwhocodes/retry@0.2.3': {}
+
+  '@iconify-json/carbon@1.1.32':
+    dependencies:
+      '@iconify/types': 2.0.0
 
   '@iconify/types@2.0.0': {}
 

@@ -21,6 +21,7 @@
   },
   "devDependencies": {
     "@antfu/eslint-config": "^2.15.0",
+    "@iconify-json/carbon": "^1.1.32",
     "@typescript-eslint/parser": "^7.7.1",
     "@unocss/eslint-plugin": "^0.59.4",
     "@unocss/preset-icons": "^0.59.4",

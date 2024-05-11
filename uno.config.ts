@@ -8,7 +8,7 @@ export default defineConfig({
     presetTypography({
       cssExtend: {
         ':not(pre) > code::before,:not(pre) > code::after': {
-          content: '&nbsp;&nbsp;',
+          content: '',
         },
         ':not(pre) > code': {
           'background-color': '#e5e5e5',
