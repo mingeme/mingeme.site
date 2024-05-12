@@ -1,6 +1,11 @@
 import { defineConfig, presetIcons, presetMini, presetTypography } from 'unocss';
 
 export default defineConfig({
+  theme: {
+    colors: {
+      second: '#E2E2E2',
+    },
+  },
   presets: [
     presetMini({
       dark: 'class',

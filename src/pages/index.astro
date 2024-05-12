@@ -15,7 +15,7 @@ const allPosts = (await getCollection('posts')).sort((a, b) => {
 <BaseLayout pageTitle={pageTitle}>
   <div class="h-full xl:max-w-3xl mx-auto px-4 py-4 md:px-0 dark:bg-dark/75">
     <div>
-      <div class="grid grid-cols-1 gap-4">
+      <div class="flex flex-col">
         {
           allPosts.map((post) => (
             <PostCard url={post.slug} frontmatter={post.data} />
