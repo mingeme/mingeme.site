@@ -29,7 +29,7 @@ importers:
     devDependencies:
       '@antfu/eslint-config':
         specifier: ^2.15.0
-        version: 2.15.0(@unocss/eslint-plugin@0.59.4(eslint@9.1.1)(typescript@5.4.5))(@vue/compiler-sfc@3.4.24)(astro-eslint-parser@0.17.0(typescript@5.4.5))(eslint-plugin-astro@0.34.0(eslint@9.1.1)(typescript@5.4.5))(eslint-plugin-format@0.1.1(eslint@9.1.1))(eslint@9.1.1)(prettier-plugin-astro@0.13.0)(svelte@4.2.15)(typescript@5.4.5)
+        version: 2.15.0(@unocss/eslint-plugin@0.59.4(eslint@9.1.1)(typescript@5.4.5))(@vue/compiler-sfc@3.4.24)(eslint-plugin-astro@0.34.0(eslint@9.1.1)(typescript@5.4.5))(eslint-plugin-format@0.1.1(eslint@9.1.1))(eslint@9.1.1)(prettier-plugin-astro@0.13.0)(svelte@4.2.15)(typescript@5.4.5)
       '@iconify-json/carbon':
         specifier: ^1.1.32
         version: 1.1.32
@@ -45,6 +45,9 @@ importers:
       '@unocss/preset-typography':
         specifier: ^0.59.4
         version: 0.59.4
+      '@unocss/transformer-directives':
+        specifier: ^0.60.2
+        version: 0.60.2
       eslint:
         specifier: ^9.1.1
         version: 9.1.1
@@ -871,6 +874,9 @@ packages:
   '@unocss/core@0.59.4':
     resolution: {integrity: sha512-bBZ1sgcAtezQVZ1BST9IS3jqcsTLyqKNjiIf7FTnX3DHpfpYuMDFzSOtmkZDzBleOLO/CtcRWjT0HwTSQAmV0A==}
 
+  '@unocss/core@0.60.2':
+    resolution: {integrity: sha512-9i+eAJAqvy9bv0vrQxUU7VtR+wO6Vfk6dqrPHKRV/vlbwRT18v/C++dQ2L6PLM1CKxgNTeld0iTlpo8J3xZlxQ==}
+
   '@unocss/eslint-plugin@0.59.4':
     resolution: {integrity: sha512-bWxr0ax0X8F97/JcQ8V34Zl4ZSPklMkYAExj+svfanng7i6ymBCmMDfSVcNjb7VJFP1ealNuEnJ9PJcV0N0aQQ==}
     engines: {node: '>=14'}
@@ -918,6 +924,10 @@ packages:
     resolution: {integrity: sha512-1qoLJlBWAkS4D4sg73990S1MT7E8E5md/YhopKjTQuEC9SyeVmEg+5pR/Xd8xhPKMqbcuBPl/DS8b6l/GQO56A==}
     engines: {node: '>=14'}
 
+  '@unocss/rule-utils@0.60.2':
+    resolution: {integrity: sha512-pg3XbU0s0TmmRk0UkSV6wTlca+Zz5xe9V+Mk8a5QqVp0oJ2jNWHO9AfzF4NcvTzM2zV2a/WbpjSBgoK8iAz3zg==}
+    engines: {node: '>=14'}
+
   '@unocss/scope@0.59.4':
     resolution: {integrity: sha512-wBQJ39kw4Tfj4km7AoGvSIobPKVnRZVsgc0bema5Y0PL3g1NeVQ/LopBI2zEJWdpxGXUWxSDsXm7BZo6qVlD/A==}
 
@@ -932,6 +942,9 @@ packages:
 
   '@unocss/transformer-directives@0.59.4':
     resolution: {integrity: sha512-nXUTEclUbs0vQ4KfLhKt4J/5SLSEq1az2FNlJmiXMmqmn75X89OrtCu2OJu9sGXhn+YyBApxgcSSdxmtpqMi1Q==}
+
+  '@unocss/transformer-directives@0.60.2':
+    resolution: {integrity: sha512-p4ZtXoz1mZ125WfANFAD6pXwQJdA4lfff5abZfoDiTPLvtvYQFmwGCeBXUnEKAnBnTwwiBD2zsIwGfumWAsqrA==}
 
   '@unocss/transformer-variant-group@0.59.4':
     resolution: {integrity: sha512-9XLixxn1NRgP62Kj4R/NC/rpqhql5F2s6ulJ8CAMTEbd/NylVhEANluPGDVUGcLJ4cj6E02hFa8C1PLGSm7/xw==}
@@ -3290,7 +3303,7 @@ snapshots:
       '@jridgewell/gen-mapping': 0.3.5
       '@jridgewell/trace-mapping': 0.3.25
 
-  '@antfu/eslint-config@2.15.0(@unocss/eslint-plugin@0.59.4(eslint@9.1.1)(typescript@5.4.5))(@vue/compiler-sfc@3.4.24)(astro-eslint-parser@0.17.0(typescript@5.4.5))(eslint-plugin-astro@0.34.0(eslint@9.1.1)(typescript@5.4.5))(eslint-plugin-format@0.1.1(eslint@9.1.1))(eslint@9.1.1)(prettier-plugin-astro@0.13.0)(svelte@4.2.15)(typescript@5.4.5)':
+  '@antfu/eslint-config@2.15.0(@unocss/eslint-plugin@0.59.4(eslint@9.1.1)(typescript@5.4.5))(@vue/compiler-sfc@3.4.24)(eslint-plugin-astro@0.34.0(eslint@9.1.1)(typescript@5.4.5))(eslint-plugin-format@0.1.1(eslint@9.1.1))(eslint@9.1.1)(prettier-plugin-astro@0.13.0)(svelte@4.2.15)(typescript@5.4.5)':
     dependencies:
       '@antfu/install-pkg': 0.3.2
       '@clack/prompts': 0.7.0
@@ -3309,7 +3322,7 @@ snapshots:
       eslint-plugin-markdown: 4.0.1(eslint@9.1.1)
       eslint-plugin-n: 17.2.1(eslint@9.1.1)
       eslint-plugin-no-only-tests: 3.1.0
-      eslint-plugin-perfectionist: 2.9.0(astro-eslint-parser@0.17.0(typescript@5.4.5))(eslint@9.1.1)(svelte@4.2.15)(typescript@5.4.5)(vue-eslint-parser@9.4.2(eslint@9.1.1))
+      eslint-plugin-perfectionist: 2.9.0(eslint@9.1.1)(svelte@4.2.15)(typescript@5.4.5)(vue-eslint-parser@9.4.2(eslint@9.1.1))
       eslint-plugin-toml: 0.11.0(eslint@9.1.1)
       eslint-plugin-unicorn: 52.0.0(eslint@9.1.1)
       eslint-plugin-unused-imports: 3.1.0(@typescript-eslint/eslint-plugin@7.7.1(@typescript-eslint/parser@7.7.1(eslint@9.1.1)(typescript@5.4.5))(eslint@9.1.1)(typescript@5.4.5))(eslint@9.1.1)
@@ -3328,7 +3341,6 @@ snapshots:
       yargs: 17.7.2
     optionalDependencies:
       '@unocss/eslint-plugin': 0.59.4(eslint@9.1.1)(typescript@5.4.5)
-      astro-eslint-parser: 0.17.0(typescript@5.4.5)
       eslint-plugin-astro: 0.34.0(eslint@9.1.1)(typescript@5.4.5)
       eslint-plugin-format: 0.1.1(eslint@9.1.1)
       prettier-plugin-astro: 0.13.0
@@ -4200,6 +4212,8 @@ snapshots:
 
   '@unocss/core@0.59.4': {}
 
+  '@unocss/core@0.60.2': {}
+
   '@unocss/eslint-plugin@0.59.4(eslint@9.1.1)(typescript@5.4.5)':
     dependencies:
       '@typescript-eslint/utils': 7.7.1(eslint@9.1.1)(typescript@5.4.5)
@@ -4285,6 +4299,11 @@ snapshots:
       '@unocss/core': 0.59.4
       magic-string: 0.30.10
 
+  '@unocss/rule-utils@0.60.2':
+    dependencies:
+      '@unocss/core': 0.60.2
+      magic-string: 0.30.10
+
   '@unocss/scope@0.59.4': {}
 
   '@unocss/transformer-attributify-jsx-babel@0.59.4':
@@ -4308,6 +4327,12 @@ snapshots:
     dependencies:
       '@unocss/core': 0.59.4
       '@unocss/rule-utils': 0.59.4
+      css-tree: 2.3.1
+
+  '@unocss/transformer-directives@0.60.2':
+    dependencies:
+      '@unocss/core': 0.60.2
+      '@unocss/rule-utils': 0.60.2
       css-tree: 2.3.1
 
   '@unocss/transformer-variant-group@0.59.4':
@@ -5062,14 +5087,13 @@ snapshots:
 
   eslint-plugin-no-only-tests@3.1.0: {}
 
-  eslint-plugin-perfectionist@2.9.0(astro-eslint-parser@0.17.0(typescript@5.4.5))(eslint@9.1.1)(svelte@4.2.15)(typescript@5.4.5)(vue-eslint-parser@9.4.2(eslint@9.1.1)):
+  eslint-plugin-perfectionist@2.9.0(eslint@9.1.1)(svelte@4.2.15)(typescript@5.4.5)(vue-eslint-parser@9.4.2(eslint@9.1.1)):
     dependencies:
       '@typescript-eslint/utils': 6.21.0(eslint@9.1.1)(typescript@5.4.5)
       eslint: 9.1.1
       minimatch: 9.0.4
       natural-compare-lite: 1.4.0
     optionalDependencies:
-      astro-eslint-parser: 0.17.0(typescript@5.4.5)
       svelte: 4.2.15
       vue-eslint-parser: 9.4.2(eslint@9.1.1)
     transitivePeerDependencies:
