@@ -1,14 +1,22 @@
-import { defineConfig, presetIcons, presetMini, presetTypography } from 'unocss';
+import { defineConfig, presetIcons, presetMini, presetTypography, presetUno, transformerDirectives } from 'unocss';
 
 export default defineConfig({
+  theme: {
+    colors: {
+      second: '#E2E2E2',
+    },
+  },
+  transformers: [
+    transformerDirectives(),
+  ],
   presets: [
-    presetMini({
+    presetUno({
       dark: 'class',
     }),
     presetTypography({
       cssExtend: {
         ':not(pre) > code::before,:not(pre) > code::after': {
-          content: '&nbsp;&nbsp;',
+          content: '',
         },
         ':not(pre) > code': {
           'background-color': '#e5e5e5',

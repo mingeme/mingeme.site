@@ -1,9 +1,18 @@
 ---
 import { getCollection } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
-const pageTitle = '我的 Astro 学习博客';
+const pageTitle = `我的 Astro 学习博客 | Mingme's blog`;
 ---
 
 <BaseLayout pageTitle={pageTitle}>
-  <p>在这里，我将分享我的学习 Astro 的之旅。</p>
+  <article
+    class="text-base
+  prose
+  dark:prose-invert
+  prose-truegray
+  xl:text-xl
+  mx-auto"
+  >
+    <p>在这里，我将分享我的学习 Astro 的之旅。</p>
+  </article>
 </BaseLayout>
