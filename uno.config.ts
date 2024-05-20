@@ -1,4 +1,4 @@
-import { defineConfig, presetIcons, presetMini, presetTypography, transformerDirectives } from 'unocss';
+import { defineConfig, presetIcons, presetMini, presetTypography, presetUno, transformerDirectives } from 'unocss';
 
 export default defineConfig({
   theme: {
@@ -10,7 +10,7 @@ export default defineConfig({
     transformerDirectives(),
   ],
   presets: [
-    presetMini({
+    presetUno({
       dark: 'class',
     }),
     presetTypography({
