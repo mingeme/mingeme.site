@@ -5,14 +5,10 @@ import moment from 'moment';
 const { url, frontmatter } = Astro.props;
 ---
 
-<div
-  class="group overflow-hidden transition-all duration-300 hover:shadow-xl dark:bg-dark"
->
+<div class="overflow-hidden transition-all duration-300 dark:bg-dark">
   <a href={`/posts/${url}`}>
-    <div class="p-4">
-      <h2
-        class="text-xl font-bold text-gray-900 group-hover:text-gray-700 dark:text-white dark:group-hover:text-gray-300"
-      >
+    <div class="py-2">
+      <h2 class="text-xl font-bold text-gray-900 dark:text-white">
         {frontmatter.title}
       </h2>
       <div class="flex items-center space-x-2 mt-2">

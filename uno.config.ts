@@ -29,6 +29,11 @@ export default defineConfig({
         },
       },
     }),
-    presetIcons(),
+    presetIcons({
+      collections: {
+        carbon: () => import('@iconify-json/carbon/icons.json').then(i => i.default),
+        mdi: () => import('@iconify-json/mdi/icons.json').then(i => i.default),
+      },
+    }),
   ],
 });
