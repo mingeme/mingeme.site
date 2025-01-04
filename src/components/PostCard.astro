@@ -18,7 +18,7 @@ const { url, frontmatter } = Astro.props;
         {frontmatter.description}
       </p>
       <div class="mt-4 text-sm text-gray-500 dark:text-gray-400">
-        发表于 {moment(frontmatter.pubDate).locale('zh-cn').format('ll')}
+        {moment(frontmatter.pubDate).locale('zh-cn').format('ll')}
       </div>
     </div>
   </a>

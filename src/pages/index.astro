@@ -5,11 +5,13 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
 const pageTitle = `Mingeme's blog`;
 
-const allPosts = (await getCollection('posts')).sort((a, b) => {
-  const d1 = new Date(a.data.pubDate);
-  const d2 = new Date(b.data.pubDate);
-  return d2.getTime() - d1.getTime();
-});
+const allPosts = (await getCollection('posts'))
+  .filter((post) => post.data.public)
+  .sort((a, b) => {
+    const d1 = new Date(a.data.pubDate);
+    const d2 = new Date(b.data.pubDate);
+    return d2.getTime() - d1.getTime();
+  });
 ---
 
 <BaseLayout pageTitle={pageTitle}>
