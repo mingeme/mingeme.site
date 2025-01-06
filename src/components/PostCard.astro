@@ -1,6 +1,6 @@
 ---
 import Badge from './Badge.astro';
-import moment from 'moment';
+import moment from 'moment-timezone';
 
 const { url, frontmatter } = Astro.props;
 ---
@@ -18,7 +18,12 @@ const { url, frontmatter } = Astro.props;
         {frontmatter.description}
       </p>
       <div class="mt-4 text-sm text-gray-500 dark:text-gray-400">
-        {moment(frontmatter.pubDate).locale('zh-cn').format('ll')}
+        {
+          moment(frontmatter.pubDate)
+            .tz('Asia/Shanghai')
+            .locale('zh-cn')
+            .format('ll')
+        }
       </div>
     </div>
   </a>

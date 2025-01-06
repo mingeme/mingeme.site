@@ -14,9 +14,9 @@ importers:
       astro:
         specifier: ^4.6.4
         version: 4.6.4(typescript@5.4.5)
-      moment:
-        specifier: ^2.30.1
-        version: 2.30.1
+      moment-timezone:
+        specifier: ^0.5.46
+        version: 0.5.46
       react:
         specifier: ^18.3.0
         version: 18.3.0
@@ -2321,6 +2321,9 @@ packages:
 
   mlly@1.6.1:
     resolution: {integrity: sha512-vLgaHvaeunuOXHSmEbZ9izxPx3USsk8KCQ8iC+aTlp5sKRSoZvwhHh5L9VbKSaVC6sJDqbyohIS76E2VmHIPAA==}
+
+  moment-timezone@0.5.46:
+    resolution: {integrity: sha512-ZXm9b36esbe7OmdABqIWJuBBiLLwAjrN7CE+7sYdCCx82Nabt1wHDj8TVseS59QIlfFPbOoiBPm6ca9BioG4hw==}
 
   moment@2.30.1:
     resolution: {integrity: sha512-uEmtNhbDOrWPFS+hdjFCBfy9f2YoyzRpwcl+DqpC6taX21FzsTLQVbMV/W7PzNSX6x/bhC1zA3c2UQ5NzH6how==}
@@ -6132,6 +6135,10 @@ snapshots:
       pathe: 1.1.2
       pkg-types: 1.1.0
       ufo: 1.5.3
+
+  moment-timezone@0.5.46:
+    dependencies:
+      moment: 2.30.1
 
   moment@2.30.1: {}
 

@@ -1,5 +1,5 @@
 ---
-import moment from 'moment';
+import moment from 'moment-timezone';
 import BaseLayout from './BaseLayout.astro';
 
 const { frontmatter } = Astro.props;
@@ -14,11 +14,21 @@ const { frontmatter } = Astro.props;
       <div class="i-carbon-calendar"></div>
       <span class="text-base">
         <time datetime={frontmatter.pubDate}>
-          {moment(frontmatter.pubDate).locale('zh-cn').format('ll')}
+          {
+            moment(frontmatter.pubDate)
+              .tz('Asia/Shanghai')
+              .locale('zh-cn')
+              .format('ll')
+          }
         </time>
         <span aria-hidden="true"> | </span>
         <span class="text-nowrap">
-          {moment(frontmatter.pubDate).locale('zh-cn').format('HH:mm:ss')}
+          {
+            moment(frontmatter.pubDate)
+              .tz('Asia/Shanghai')
+              .locale('zh-cn')
+              .format('HH:mm:ss')
+          }
         </span>
       </span>
     </div>
