@@ -114,6 +114,10 @@
     transition: background 0.3s;
     font-size: 1.5rem;
     -webkit-tap-highlight-color: transparent;
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
   }
 
   .image-viewer .nav-button:hover {
@@ -205,6 +209,11 @@
       }
     }
 
+    function closeViewer() {
+      viewer.classList.remove('active');
+      resetZoom();
+    }
+
     prevBtn.addEventListener('click', (e) => {
       e.stopPropagation();
       currentIndex =
@@ -237,10 +246,7 @@
       }
     });
 
-    viewer.addEventListener('click', () => {
-      viewer.classList.remove('active');
-      resetZoom();
-    });
+    viewer.addEventListener('click', closeViewer);
 
     img.addEventListener('click', (e) => {
       e.stopPropagation();
@@ -250,9 +256,17 @@
       e.stopPropagation();
     });
 
-    zoomScale.addEventListener('click', (e) => {
-      e.stopPropagation();
+    // Add keyboard event listener for ESC key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && viewer.classList.contains('active')) {
+        closeViewer();
+      }
     });
+
+    // Clean up event listener when the component is destroyed
+    return () => {
+      document.removeEventListener('keydown', closeViewer);
+    };
   }
 
   initImageViewer();
