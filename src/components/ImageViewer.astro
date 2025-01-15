@@ -1,0 +1,163 @@
+---
+
+---
+
+<div class="image-viewer">
+  <div class="image-viewer-container">
+    <img alt="Zoomed image" />
+    <div class="nav-buttons">
+      <div class="nav-button prev">←</div>
+      <div class="nav-button next">→</div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .image-viewer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    padding: 1rem;
+    box-sizing: border-box;
+  }
+
+  .image-viewer.active {
+    display: flex;
+  }
+
+  .image-viewer-container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+  }
+
+  .image-viewer img {
+    max-width: 100%;
+    max-height: calc(90vh - 4rem);
+    object-fit: contain;
+    width: auto;
+    height: auto;
+    margin: auto;
+  }
+
+  .nav-buttons {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    padding: 1rem;
+  }
+
+  .image-viewer .nav-button {
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    width: 3rem;
+    height: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border-radius: 50%;
+    transition: background 0.3s;
+    font-size: 1.5rem;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .image-viewer .nav-button:hover {
+    background: rgba(255, 255, 255, 0.2);
+  }
+
+  /* Responsive styles */
+  @media (max-width: 768px) {
+    .image-viewer {
+      padding: 0.5rem;
+    }
+
+    .image-viewer .nav-button {
+      width: 2.5rem;
+      height: 2.5rem;
+      font-size: 1.2rem;
+    }
+
+    .nav-buttons {
+      padding: 0.5rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .image-viewer .nav-button {
+      width: 2rem;
+      height: 2rem;
+      font-size: 1rem;
+    }
+  }
+</style>
+
+<script is:inline>
+  function initImageViewer() {
+    const viewer = document.querySelector('.image-viewer');
+    const img = viewer.querySelector('img');
+    const prevBtn = viewer.querySelector('.nav-button.prev');
+    const nextBtn = viewer.querySelector('.nav-button.next');
+    const articleImages = Array.from(document.querySelectorAll('article img'));
+    let currentIndex = 0;
+
+    articleImages.forEach((image, index) => {
+      image.style.cursor = 'zoom-in';
+      image.addEventListener('click', (e) => {
+        e.preventDefault();
+        currentIndex = index;
+        showImage(currentIndex);
+      });
+    });
+
+    function showImage(index) {
+      img.src = articleImages[index].src;
+      viewer.classList.add('active');
+    }
+
+    // Navigation handlers
+    prevBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      currentIndex =
+        (currentIndex - 1 + articleImages.length) % articleImages.length;
+      showImage(currentIndex);
+    });
+
+    nextBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      currentIndex = (currentIndex + 1) % articleImages.length;
+      showImage(currentIndex);
+    });
+
+    // Close viewer on background click
+    viewer.addEventListener('click', () => {
+      viewer.classList.remove('active');
+    });
+
+    // Prevent image and navigation buttons from triggering close
+    img.addEventListener('click', (e) => {
+      e.stopPropagation();
+    });
+
+    viewer.querySelector('.nav-buttons').addEventListener('click', (e) => {
+      e.stopPropagation();
+    });
+  }
+
+  initImageViewer();
+  document.addEventListener('astro:after-swap', initImageViewer);
+</script>
