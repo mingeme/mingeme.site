@@ -38,6 +38,55 @@ const { frontmatter } = Astro.props;
   </div>
 </BaseLayout>
 
+<style is:global>
+  .image-viewer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+  
+  .image-viewer.active {
+    display: flex;
+  }
+
+  .image-viewer img {
+    max-width: 90%;
+    max-height: 90vh;
+    object-fit: contain;
+  }
+
+  .image-viewer .nav-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    padding: 1rem;
+    cursor: pointer;
+    border-radius: 50%;
+    transition: background 0.3s;
+  }
+
+  .image-viewer .nav-button:hover {
+    background: rgba(255, 255, 255, 0.2);
+  }
+
+  .image-viewer .prev {
+    left: 1rem;
+  }
+
+  .image-viewer .next {
+    right: 1rem;
+  }
+</style>
+
 <script is:inline>
   /** Attaches copy buttons to code blocks in the document,
    * allowing users to copy code easily. */
@@ -92,4 +141,68 @@ const { frontmatter } = Astro.props;
   }
   backToTop();
   document.addEventListener('astro:after-swap', backToTop);
+
+  /** Initialize image viewer functionality */
+  function initImageViewer() {
+    // Create viewer elements
+    const viewer = document.createElement('div');
+    viewer.className = 'image-viewer';
+    const img = document.createElement('img');
+    const prevBtn = document.createElement('div');
+    prevBtn.className = 'nav-button prev';
+    prevBtn.innerHTML = '←';
+    const nextBtn = document.createElement('div');
+    nextBtn.className = 'nav-button next';
+    nextBtn.innerHTML = '→';
+    
+    viewer.appendChild(img);
+    viewer.appendChild(prevBtn);
+    viewer.appendChild(nextBtn);
+    document.body.appendChild(viewer);
+
+    // Get all images in the article
+    const articleImages = Array.from(document.querySelectorAll('article img'));
+    let currentIndex = 0;
+
+    // Add click handlers to all images
+    articleImages.forEach((image, index) => {
+      image.style.cursor = 'zoom-in';
+      image.addEventListener('click', (e) => {
+        e.preventDefault();
+        currentIndex = index;
+        showImage(currentIndex);
+      });
+    });
+
+    function showImage(index) {
+      img.src = articleImages[index].src;
+      viewer.classList.add('active');
+    }
+
+    // Navigation handlers
+    prevBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      currentIndex = (currentIndex - 1 + articleImages.length) % articleImages.length;
+      showImage(currentIndex);
+    });
+
+    nextBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      currentIndex = (currentIndex + 1) % articleImages.length;
+      showImage(currentIndex);
+    });
+
+    // Close viewer on background click
+    viewer.addEventListener('click', () => {
+      viewer.classList.remove('active');
+    });
+
+    // Prevent image click from closing viewer
+    img.addEventListener('click', (e) => {
+      e.stopPropagation();
+    });
+  }
+
+  initImageViewer();
+  document.addEventListener('astro:after-swap', initImageViewer);
 </script>
