@@ -1,0 +1,274 @@
+---
+
+---
+
+<div class="image-viewer">
+  <div class="image-viewer-container">
+    <div class="image-wrapper">
+      <img alt="Zoomed image" />
+      <div class="zoom-scale">100%</div>
+    </div>
+    <div class="nav-buttons">
+      <div class="nav-button prev">←</div>
+      <div class="zoom-buttons">
+        <div class="nav-button zoom-in">+</div>
+        <div class="nav-button zoom-out">-</div>
+      </div>
+      <div class="nav-button next">→</div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .image-viewer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    padding: 1rem;
+    box-sizing: border-box;
+  }
+
+  .image-viewer.active {
+    display: flex;
+  }
+
+  .image-viewer-container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+  }
+
+  .image-wrapper {
+    position: relative;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    overflow: hidden;
+  }
+
+  .image-viewer img {
+    max-width: 100%;
+    max-height: calc(90vh - 4rem);
+    object-fit: contain;
+    width: auto;
+    height: auto;
+    margin: auto;
+    transition: transform 0.2s ease-out;
+  }
+
+  .nav-buttons {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+  }
+
+  .zoom-buttons {
+    display: flex;
+    gap: 0.5rem;
+  }
+
+  .zoom-scale {
+    position: absolute;
+    top: 1rem;
+    left: 50%;
+    transform: translateX(-50%);
+    color: white;
+    font-size: 0.875rem;
+    min-width: 3.5rem;
+    text-align: center;
+    opacity: 0.8;
+    padding: 0.5rem;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 1rem;
+    pointer-events: none;
+  }
+
+  .image-viewer .nav-button {
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    width: 3rem;
+    height: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border-radius: 50%;
+    transition: background 0.3s;
+    font-size: 1.5rem;
+    -webkit-tap-highlight-color: transparent;
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+  }
+
+  .image-viewer .nav-button:hover {
+    background: rgba(255, 255, 255, 0.2);
+  }
+
+  /* Responsive styles */
+  @media (max-width: 768px) {
+    .image-viewer {
+      padding: 0.5rem;
+    }
+
+    .image-viewer .nav-button {
+      width: 2.5rem;
+      height: 2.5rem;
+      font-size: 1.2rem;
+    }
+
+    .nav-buttons {
+      padding: 0.5rem;
+    }
+
+    .zoom-scale {
+      top: 0.5rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .image-viewer .nav-button {
+      width: 2rem;
+      height: 2rem;
+      font-size: 1rem;
+    }
+  }
+</style>
+
+<script is:inline>
+  function initImageViewer() {
+    const viewer = document.querySelector('.image-viewer');
+    const img = viewer.querySelector('img');
+    const prevBtn = viewer.querySelector('.nav-button.prev');
+    const nextBtn = viewer.querySelector('.nav-button.next');
+    const zoomInBtn = viewer.querySelector('.nav-button.zoom-in');
+    const zoomOutBtn = viewer.querySelector('.nav-button.zoom-out');
+    const zoomScale = viewer.querySelector('.zoom-scale');
+    const articleImages = Array.from(document.querySelectorAll('article img'));
+    let currentIndex = 0;
+    let currentScale = 1;
+    const SCALE_STEP = 0.2;
+    const MAX_SCALE = 3;
+    const MIN_SCALE = 0.5;
+
+    articleImages.forEach((image, index) => {
+      image.style.cursor = 'zoom-in';
+      image.addEventListener('click', (e) => {
+        e.preventDefault();
+        currentIndex = index;
+        showImage(currentIndex);
+      });
+    });
+
+    function showImage(index) {
+      img.src = articleImages[index].src;
+      viewer.classList.add('active');
+      resetZoom();
+    }
+
+    function resetZoom() {
+      currentScale = 1;
+      updateZoom();
+    }
+
+    function updateZoom() {
+      img.style.transform = `scale(${currentScale})`;
+      zoomScale.textContent = `${Math.round(currentScale * 100)}%`;
+    }
+
+    function zoomIn() {
+      if (currentScale < MAX_SCALE) {
+        currentScale = Math.min(currentScale + SCALE_STEP, MAX_SCALE);
+        updateZoom();
+      }
+    }
+
+    function zoomOut() {
+      if (currentScale > MIN_SCALE) {
+        currentScale = Math.max(currentScale - SCALE_STEP, MIN_SCALE);
+        updateZoom();
+      }
+    }
+
+    function closeViewer() {
+      viewer.classList.remove('active');
+      resetZoom();
+    }
+
+    prevBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      currentIndex =
+        (currentIndex - 1 + articleImages.length) % articleImages.length;
+      showImage(currentIndex);
+    });
+
+    nextBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      currentIndex = (currentIndex + 1) % articleImages.length;
+      showImage(currentIndex);
+    });
+
+    zoomInBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      zoomIn();
+    });
+
+    zoomOutBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      zoomOut();
+    });
+
+    img.addEventListener('wheel', (e) => {
+      e.preventDefault();
+      if (e.deltaY < 0) {
+        zoomIn();
+      } else {
+        zoomOut();
+      }
+    });
+
+    viewer.addEventListener('click', closeViewer);
+
+    img.addEventListener('click', (e) => {
+      e.stopPropagation();
+    });
+
+    viewer.querySelector('.nav-buttons').addEventListener('click', (e) => {
+      e.stopPropagation();
+    });
+
+    // Add keyboard event listener for ESC key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && viewer.classList.contains('active')) {
+        closeViewer();
+      }
+    });
+
+    // Clean up event listener when the component is destroyed
+    return () => {
+      document.removeEventListener('keydown', closeViewer);
+    };
+  }
+
+  initImageViewer();
+  document.addEventListener('astro:after-swap', initImageViewer);
+</script>

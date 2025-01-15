@@ -1,6 +1,7 @@
 ---
 import moment from 'moment-timezone';
 import BaseLayout from './BaseLayout.astro';
+import ImageViewer from '../components/ImageViewer.astro';
 
 const { frontmatter } = Astro.props;
 ---
@@ -36,6 +37,7 @@ const { frontmatter } = Astro.props;
       <slot />
     </article>
   </div>
+  <ImageViewer />
 </BaseLayout>
 
 <script is:inline>
