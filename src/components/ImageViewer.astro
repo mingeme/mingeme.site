@@ -4,9 +4,16 @@
 
 <div class="image-viewer">
   <div class="image-viewer-container">
-    <img alt="Zoomed image" />
+    <div class="image-wrapper">
+      <img alt="Zoomed image" />
+      <div class="zoom-scale">100%</div>
+    </div>
     <div class="nav-buttons">
       <div class="nav-button prev">←</div>
+      <div class="zoom-buttons">
+        <div class="nav-button zoom-in">+</div>
+        <div class="nav-button zoom-out">-</div>
+      </div>
       <div class="nav-button next">→</div>
     </div>
   </div>
@@ -41,6 +48,16 @@
     height: 100%;
   }
 
+  .image-wrapper {
+    position: relative;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    overflow: hidden;
+  }
+
   .image-viewer img {
     max-width: 100%;
     max-height: calc(90vh - 4rem);
@@ -48,6 +65,7 @@
     width: auto;
     height: auto;
     margin: auto;
+    transition: transform 0.2s ease-out;
   }
 
   .nav-buttons {
@@ -57,8 +75,30 @@
     right: 0;
     display: flex;
     justify-content: center;
+    align-items: center;
     gap: 1rem;
     padding: 1rem;
+  }
+
+  .zoom-buttons {
+    display: flex;
+    gap: 0.5rem;
+  }
+
+  .zoom-scale {
+    position: absolute;
+    top: 1rem;
+    left: 50%;
+    transform: translateX(-50%);
+    color: white;
+    font-size: 0.875rem;
+    min-width: 3.5rem;
+    text-align: center;
+    opacity: 0.8;
+    padding: 0.5rem;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 1rem;
+    pointer-events: none;
   }
 
   .image-viewer .nav-button {
@@ -95,6 +135,10 @@
     .nav-buttons {
       padding: 0.5rem;
     }
+
+    .zoom-scale {
+      top: 0.5rem;
+    }
   }
 
   @media (max-width: 480px) {
@@ -112,8 +156,15 @@
     const img = viewer.querySelector('img');
     const prevBtn = viewer.querySelector('.nav-button.prev');
     const nextBtn = viewer.querySelector('.nav-button.next');
+    const zoomInBtn = viewer.querySelector('.nav-button.zoom-in');
+    const zoomOutBtn = viewer.querySelector('.nav-button.zoom-out');
+    const zoomScale = viewer.querySelector('.zoom-scale');
     const articleImages = Array.from(document.querySelectorAll('article img'));
     let currentIndex = 0;
+    let currentScale = 1;
+    const SCALE_STEP = 0.2;
+    const MAX_SCALE = 3;
+    const MIN_SCALE = 0.5;
 
     articleImages.forEach((image, index) => {
       image.style.cursor = 'zoom-in';
@@ -127,9 +178,33 @@
     function showImage(index) {
       img.src = articleImages[index].src;
       viewer.classList.add('active');
+      resetZoom();
     }
 
-    // Navigation handlers
+    function resetZoom() {
+      currentScale = 1;
+      updateZoom();
+    }
+
+    function updateZoom() {
+      img.style.transform = `scale(${currentScale})`;
+      zoomScale.textContent = `${Math.round(currentScale * 100)}%`;
+    }
+
+    function zoomIn() {
+      if (currentScale < MAX_SCALE) {
+        currentScale = Math.min(currentScale + SCALE_STEP, MAX_SCALE);
+        updateZoom();
+      }
+    }
+
+    function zoomOut() {
+      if (currentScale > MIN_SCALE) {
+        currentScale = Math.max(currentScale - SCALE_STEP, MIN_SCALE);
+        updateZoom();
+      }
+    }
+
     prevBtn.addEventListener('click', (e) => {
       e.stopPropagation();
       currentIndex =
@@ -143,17 +218,39 @@
       showImage(currentIndex);
     });
 
-    // Close viewer on background click
-    viewer.addEventListener('click', () => {
-      viewer.classList.remove('active');
+    zoomInBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      zoomIn();
     });
 
-    // Prevent image and navigation buttons from triggering close
+    zoomOutBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      zoomOut();
+    });
+
+    img.addEventListener('wheel', (e) => {
+      e.preventDefault();
+      if (e.deltaY < 0) {
+        zoomIn();
+      } else {
+        zoomOut();
+      }
+    });
+
+    viewer.addEventListener('click', () => {
+      viewer.classList.remove('active');
+      resetZoom();
+    });
+
     img.addEventListener('click', (e) => {
       e.stopPropagation();
     });
 
     viewer.querySelector('.nav-buttons').addEventListener('click', (e) => {
+      e.stopPropagation();
+    });
+
+    zoomScale.addEventListener('click', (e) => {
       e.stopPropagation();
     });
   }
