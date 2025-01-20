@@ -1,5 +1,4 @@
 ---
-import Badge from './Badge.astro';
 import moment from 'moment-timezone';
 
 const { url, frontmatter } = Astro.props;
@@ -11,8 +10,14 @@ const { url, frontmatter } = Astro.props;
       <h2 class="text-xl font-bold text-gray-900 dark:text-white">
         {frontmatter.title}
       </h2>
-      <div class="flex items-center space-x-2 mt-2">
-        {frontmatter.tags.map((tag: string) => <Badge>{tag}</Badge>)}
+      <div class="flex flex-wrap gap-2 mt-2">
+        {
+          frontmatter.tags.map((tag: string) => (
+            <div class="text-xs px-2 py-1 bg-gray-50 dark:bg-gray-800 text-gray-600 dark:text-gray-300 rounded hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors duration-200">
+              {tag}
+            </div>
+          ))
+        }
       </div>
       <p class="mt-2 text-gray-600 dark:text-gray-400">
         {frontmatter.description}
