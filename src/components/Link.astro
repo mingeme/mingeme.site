@@ -9,7 +9,12 @@ const isActive = url === pathname || url === '/' + subpath?.[0];
 <a
   href={url}
   rel="noopener noreferrer"
-  class="px-2 text-gray-400 hover:text-black dark:hover:text-white transition-colors"
+  class:list={[
+    'px-2 transition-colors',
+    isActive
+      ? 'text-black dark:text-white font-medium'
+      : 'text-gray-600 dark:text-gray-300 hover:text-black dark:hover:text-white',
+  ]}
 >
   {title}
 </a>
