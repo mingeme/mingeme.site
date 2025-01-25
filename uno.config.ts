@@ -1,6 +1,9 @@
 import { defineConfig, presetIcons, presetTypography, presetUno, transformerDirectives } from 'unocss';
 
 export default defineConfig({
+  safelist: [
+    ...Array.from({ length: 6 }, (_, i) => `pl-${i * 4}`),
+  ],
   theme: {
     colors: {
       second: '#E2E2E2',

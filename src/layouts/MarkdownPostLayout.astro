@@ -2,40 +2,45 @@
 import moment from 'moment-timezone';
 import BaseLayout from './BaseLayout.astro';
 import ImageViewer from '../components/ImageViewer.astro';
+import TableOfContents from '../components/TableOfContents.astro';
 
-const { frontmatter } = Astro.props;
+const { title, pubDate, headings } = Astro.props;
+const allHeadings = [
+  {
+    depth: 1,
+    slug: 'title',
+    text: title,
+  },
+  ...headings,
+];
 ---
 
-<BaseLayout pageTitle={`${frontmatter.title} | Mingeme's blog`}>
-  <div
-    class="text-base prose dark:prose-invert prose-truegray xl:text-xl mx-auto"
-  >
-    <h1>{frontmatter.title}</h1>
-    <div class="flex items-center my-2 opacity-80 space-x-2">
-      <div class="i-carbon-calendar"></div>
-      <span class="text-base">
-        <time datetime={frontmatter.pubDate}>
-          {
-            moment(frontmatter.pubDate)
-              .tz('Asia/Shanghai')
-              .locale('zh-cn')
-              .format('ll')
-          }
-        </time>
-        <span aria-hidden="true"> | </span>
-        <span class="text-nowrap">
-          {
-            moment(frontmatter.pubDate)
-              .tz('Asia/Shanghai')
-              .locale('zh-cn')
-              .format('HH:mm:ss')
-          }
+<BaseLayout pageTitle={`${title} | Mingeme's blog`}>
+  <div class="relative xl:max-w-3xl mx-auto">
+    <div class="text-base prose dark:prose-invert prose-truegray xl:text-xl">
+      <h1 id="title">{title}</h1>
+      <div class="flex items-center my-2 opacity-80 space-x-2">
+        <div class="i-carbon-calendar"></div>
+        <span class="text-base">
+          <time datetime={pubDate}>
+            {moment(pubDate).tz('Asia/Shanghai').locale('zh-cn').format('ll')}
+          </time>
+          <span aria-hidden="true"> | </span>
+          <span class="text-nowrap">
+            {
+              moment(pubDate)
+                .tz('Asia/Shanghai')
+                .locale('zh-cn')
+                .format('HH:mm:ss')
+            }
+          </span>
         </span>
-      </span>
+      </div>
+      <TableOfContents headings={allHeadings} />
+      <article>
+        <slot />
+      </article>
     </div>
-    <article>
-      <slot />
-    </article>
   </div>
   <ImageViewer />
 </BaseLayout>
