@@ -16,31 +16,39 @@ const allHeadings = [
 ---
 
 <BaseLayout pageTitle={`${title} | Mingeme's blog`}>
-  <div class="relative xl:max-w-3xl mx-auto">
-    <div class="text-base prose dark:prose-invert prose-truegray xl:text-xl">
-      <h1 id="title">{title}</h1>
-      <div class="flex items-center my-2 opacity-80 space-x-2">
-        <div class="i-carbon-calendar"></div>
-        <span class="text-base">
-          <time datetime={pubDate}>
-            {moment(pubDate).tz('Asia/Shanghai').locale('zh-cn').format('ll')}
-          </time>
-          <span aria-hidden="true"> | </span>
-          <span class="text-nowrap">
-            {
-              moment(pubDate)
-                .tz('Asia/Shanghai')
-                .locale('zh-cn')
-                .format('HH:mm:ss')
-            }
-          </span>
-        </span>
-      </div>
+  <div class="max-w-4xl mx-auto px-4 py-8">
+    <article class="prose dark:prose-invert prose-truegray lg:prose-lg mx-auto">
+      <header class="mb-8">
+        <h1 id="title" class="mb-4">{title}</h1>
+        <div
+          class="flex items-center gap-4 text-gray-600 dark:text-gray-400 text-sm"
+        >
+          <div class="flex items-center gap-1">
+            <div class="i-carbon-calendar w-4 h-4"></div>
+            <time datetime={pubDate}>
+              {moment(pubDate).tz('Asia/Shanghai').locale('zh-cn').format('ll')}
+            </time>
+          </div>
+          <div class="flex items-center gap-1">
+            <div class="i-carbon-time w-4 h-4"></div>
+            <span class="text-nowrap">
+              {
+                moment(pubDate)
+                  .tz('Asia/Shanghai')
+                  .locale('zh-cn')
+                  .format('HH:mm')
+              }
+            </span>
+          </div>
+        </div>
+      </header>
+
       <TableOfContents headings={allHeadings} />
-      <article>
+
+      <div class="mt-8">
         <slot />
-      </article>
-    </div>
+      </div>
+    </article>
   </div>
   <ImageViewer />
 </BaseLayout>
