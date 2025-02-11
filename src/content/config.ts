@@ -8,6 +8,7 @@ const postsCollection = defineCollection({
     pubDate: z.string().datetime({ offset: true }),
     description: z.string().optional(),
     public: z.boolean().default(true),
+    misc: z.boolean().default(false),
     tags: z.array(z.string()).optional(),
   }),
 });

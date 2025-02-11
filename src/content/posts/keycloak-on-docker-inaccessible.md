@@ -1,7 +1,7 @@
 ---
 title: Keycloak on Docker 安装完后无法访问https://＜domain＞/auth/admin
 pubDate: '2021-04-08T10:53:53+08:00'
-public: false
+public: true
 tags:
   - docker
   - keycloak

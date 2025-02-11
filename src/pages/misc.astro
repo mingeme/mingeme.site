@@ -3,10 +3,10 @@ import { getCollection } from 'astro:content';
 import PostCard from '../components/PostCard.astro';
 import BaseLayout from '../layouts/BaseLayout.astro';
 
-const pageTitle = `Mingeme's blog`;
+const pageTitle = `Mingeme's miscellaneous talks`;
 
 const allPosts = (await getCollection('posts'))
-  .filter((post) => post.data.public && !post.data.misc)
+  .filter((post) => post.data.public && post.data.misc)
   .sort((a, b) => {
     const d1 = new Date(a.data.pubDate);
     const d2 = new Date(b.data.pubDate);
