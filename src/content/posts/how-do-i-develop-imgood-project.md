@@ -78,7 +78,7 @@ tags:
 
 ### 域名
 
-选择在 Namecheap 购买域名[imgood.ink](https://imgood.ink)，看名字就知道，主打一个价格便宜，3刀一年拿下。本想绑定 Link 支付，但是绑定银联信用卡时一直不通过，最后只好注册了 Paypal 账户进行支付。
+选择在 Namecheap 购买域名[imgood.ink](https://imgood.ink)，看名字就知道，主打一个价格便宜，3刀一年拿下。本想绑定 Stripe 支付，但是绑定银联信用卡时一直不通过，最后只好注册了 Paypal 账户进行支付。
 
 ### 域名解析
 
