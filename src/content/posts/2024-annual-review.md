@@ -17,14 +17,14 @@ tags:
 
 故事的开始往往都是以一个蓄谋已久的执念开始，或是在一种好死不死想改变却无法改变的生活状态中，发觉平淡的生活缺少对理想的追求，缺少对生活的热情，缺少对自然的向往，于是乎年初的我便产生了一个看似荒诞的想法，独自一人踏上旅行之路，勇敢的人先享受世界。
 
-![uAClrQY.png](https://imgood.s3.bitiful.net/2025/1/22/uAClrQY.png)
+![uAClrQY.png](https://imgood.s3.bitiful.net/2025/1/22/uAClrQY.png?fmt=webp)
 
 诚然，我履行了自己的诺言。从近两年半之久的职场舒适圈离职，谈不上任何强有力的理由，为事业？为爱情？为名利？好像都不是，这一切仿佛只是我寂寥的心在作祟，任性了一回，以为只要自己做出改变，走出舒适圈，不给自己的未来设下限制，不做出计划反而能够勇敢冒险，这一切将会在路上得出答案，但是我从未想到，这一切的答案将会是什么。没关系，在路上，我就感受沿途的风景，留下我的脚印。
 
 为此，六月的云南，我直奔你而来。在大理，在苍山脚下，在洱海旁，我化身成蒲公英，风吹哪儿，就在哪儿停下。相机是我今年来收获的好伙伴，想与之分享的便帮我记录下。从大理到丽江，再到香格里拉，我忘记是怀揣着怎样一种心情完成这一段旅程，只记得美好的景终究是过眼云烟，触动心灵的瞬间转瞬即逝，每想分享这段喜悦的心情时，却只能默默抬起相机，又放下，好似自己也成了其中一位打卡的游客，甚至是没能出现在自己镜头里的游客。不知不觉在后半段旅途中，我像一个泄了气的皮球，对巧夺天工的美景热情不再。按下快门也变得随意，打卡式般的感觉再次袭来，如果工作是为了完成任务赚取报酬，那么我旅行的目的又是什么，只是为了在每个城市或景点证明我到此一游吗？不，我不想要证明，我只想知道自己在哪里，在那里的人是什么样子，在那里的风景是什么样子，在那里的人生是什么样子，会和谁留下怎样的故事等等。正是在这样一种复杂的心情之下，我从云南来到了重庆中转，潦草的在一家青旅里住了几天，一整个上午睡觉，下午至晚上出去觅食，要想抓住男人的心就得抓住他的胃，在重庆，我的胃得到了极大的满足。至此，带着迷茫与焦虑，我的旅程告一段落，旅行的执念不再反复出现。
 
-![uACqXJR.jpeg](https://imgood.s3.bitiful.net/2025/1/22/uACqXJR.jpeg)
-![uACzdLq.jpeg](https://imgood.s3.bitiful.net/2025/1/22/uACzdLq.jpeg)
+![uACqXJR.jpeg](https://imgood.s3.bitiful.net/2025/1/22/uACqXJR.jpeg?fmt=webp)
+![uACzdLq.jpeg](https://imgood.s3.bitiful.net/2025/1/22/uACzdLq.jpeg?fmt=webp)
 
 暑假来临，我回去了，在热寂的大都市里，我同朋友一样开始找工作。我俩临时住在了深圳龙华某偏僻的城中村，八层的楼房，没有电梯，纯享受，为了短租节省房费，每天除了上下楼吃饭就是在空调房里避暑，而我也一边躺平一边投简历。在持续了大约一个月无果后，我知道非招聘季节会是这样，于是我决定让朋友帮忙内推od，虽然不是很想去，但是相比之下，我更害怕经济压力带来的恐惧与不安。就这样准备了两礼拜的笔试面试，直到八月初我的offer流程走完，带着心有不甘暂时接受了这一条路，只是为了一个目的，积蓄力量，我相信命运会牵着我走。
 
@@ -68,8 +68,8 @@ tags:
 
 清明假期和好哥们去了黄山，终结了爬山的执念。五岳归来不看山，黄山归来不看岳，名副其实。黄山美景做我wx背景图去了。
 
-![uAHjegJ.jpeg](https://imgood.s3.bitiful.net/2025/1/23/uAHjegJ.jpeg)
-![uAIpUqz.jpeg](https://imgood.s3.bitiful.net/2025/1/23/uAIpUqz.jpeg)
+![uAHjegJ.jpeg](https://imgood.s3.bitiful.net/2025/1/23/uAHjegJ.jpeg?fmt=webp)
+![uAIpUqz.jpeg](https://imgood.s3.bitiful.net/2025/1/23/uAIpUqz.jpeg?fmt=webp)
 
 2、武汉
 
@@ -87,13 +87,13 @@ tags:
 
 两天丽江，只为玉龙雪山而来。其实并没有上去，在半山腰，云杉坪和蓝月谷的美也是独特一份。
 
-![uAIzs0I.jpeg](https://imgood.s3.bitiful.net/2025/1/23/uAIzs0I.jpeg)
+![uAIzs0I.jpeg](https://imgood.s3.bitiful.net/2025/1/23/uAIzs0I.jpeg?fmt=webp)
 ![uAIyKGJ.jpeg](https://imgood.s3.bitiful.net/2025/1/23/uAIyKGJ.jpeg)
-![uAIBPVF.jpeg](https://imgood.s3.bitiful.net/2025/1/23/uAIBPVF.jpeg)
+![uAIBPVF.jpeg](https://imgood.s3.bitiful.net/2025/1/23/uAIBPVF.jpeg?fmt=webp)
 
 三天香格里拉。不愧是高原，跑起来会有心虚的感觉，容易嗝屁。住在独克宗古城附近的一家青旅，三十左右一天，能凑活着。独克宗古城逛了，牦牛肉吃了，转经筒转了。普达措森林公园一下午徒步，真正的森林氧吧，属都湖因仓央嘉措的纯爱故事而变得令人向往，天很蓝，水很清，草很茂，这就是牛马的天堂，我这个真牛马来不及羡慕就匆匆离去。纳帕海和虎跳峡没去，小松赞林寺没去，经幡也没去看，有点小遗憾，主要也有点心累，无心欣赏美景。
 
-![uAIxdAh.jpeg](https://imgood.s3.bitiful.net/2025/1/23/uAIxdAh.jpeg)
+![uAIxdAh.jpeg](https://imgood.s3.bitiful.net/2025/1/23/uAIxdAh.jpeg?fmt=webp)
 
 5、重庆
 
@@ -103,24 +103,24 @@ tags:
 
 正值暑假，说走就走的旅行之姐妹三人行，全程爬到金顶，没坐缆车，可把我们累坏，我们做到了，绿色草甸很美，这样的家庭活动恐怕很少再会有了。
 
-![uAN4Zyi.jpeg](https://imgood.s3.bitiful.net/2025/1/24/uAN4Zyi.jpeg)
+![uAN4Zyi.jpeg](https://imgood.s3.bitiful.net/2025/1/24/uAN4Zyi.jpeg?fmt=webp)
 
 7、厦门-泉州
 
 国庆假期，应朋友邀约，福建两地游。泉州古城，厦门滨海，闽南小吃，都很不错。
 
 泉州木偶戏演出，有点看困，对传统文化不是很感冒。
-![uAN948v.jpeg](https://imgood.s3.bitiful.net/2025/1/24/uAN948v.jpeg)
+![uAN948v.jpeg](https://imgood.s3.bitiful.net/2025/1/24/uAN948v.jpeg?fmt=webp)
 
 泉州古城，开元寺双古塔，钟楼蕴含着闽南文化。
-![uANJ8rU.JPG](https://imgood.s3.bitiful.net/2025/1/24/uANJ8rU.JPG)
+![uANJ8rU.JPG](https://imgood.s3.bitiful.net/2025/1/24/uANJ8rU.JPG?fmt=webp)
 
 泉州洛迦寺，建立在海上的寺庙，
-![uANHyt8.JPG](https://imgood.s3.bitiful.net/2025/1/24/uANHyt8.JPG)
-![uANIkvX.JPG](https://imgood.s3.bitiful.net/2025/1/24/uANIkvX.JPG)
+![uANHyt8.JPG](https://imgood.s3.bitiful.net/2025/1/24/uANHyt8.JPG?fmt=webp)
+![uANIkvX.JPG](https://imgood.s3.bitiful.net/2025/1/24/uANIkvX.JPG?fmt=webp)
 
 厦门滨海，沿着滨海街道走一走，海风的气息让人心情舒畅。
-![uANYrAa.png](https://imgood.s3.bitiful.net/2025/1/24/uANYrAa.png)
+![uANYrAa.png](https://imgood.s3.bitiful.net/2025/1/24/uANYrAa.png?fmt=webp)
 ![uANZcU4.JPG](https://imgood.s3.bitiful.net/2025/1/24/uANZcU4.JPG)
 
 8、成都
@@ -128,16 +128,16 @@ tags:
 与好兄弟的又一次特种兵式旅游。春熙路，都江堰，大熊猫基地，该打卡的打卡，老成都火锅和串串这叫一个地道，美食深得我心。
 
 第一晚，街头walk，吐槽一下哥们的拍照技术。
-![uAO3MP7.jpeg](https://imgood.s3.bitiful.net/2025/1/24/uAO3MP7.jpeg)
+![uAO3MP7.jpeg](https://imgood.s3.bitiful.net/2025/1/24/uAO3MP7.jpeg?fmt=webp)
 
 大熊猫基地与大笋头的合影，嘻嘻。
-![uAO5ejk.jpeg](https://imgood.s3.bitiful.net/2025/1/24/uAO5ejk.jpeg)
+![uAO5ejk.jpeg](https://imgood.s3.bitiful.net/2025/1/24/uAO5ejk.jpeg?fmt=webp)
 
 9、广州
 
 去看陶喆演唱会啦，人生体验+1，现场气氛很活跃，我也融入唱了几句，外场是真冷。听到了Angel，不过只唱了前半部分，当时那是哇塞激动。
 
-![uAO8MoZ.jpeg](https://imgood.s3.bitiful.net/2025/1/24/uAO8MoZ.jpeg)
+![uAO8MoZ.jpeg](https://imgood.s3.bitiful.net/2025/1/24/uAO8MoZ.jpeg?fmt=webp)
 
 ## 好物
 
