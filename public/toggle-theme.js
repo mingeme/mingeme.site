@@ -26,7 +26,7 @@ function setPreference() {
 }
 
 function reflectPreference() {
-  document.firstElementChild.setAttribute('class', themeValue);
+  document.firstElementChild.setAttribute('class', 'light');
 
   document.querySelector('#theme-btn')?.setAttribute('aria-label', themeValue);
 
