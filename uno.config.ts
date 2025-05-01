@@ -1,4 +1,5 @@
-import { defineConfig, presetIcons, presetTypography, presetUno, transformerDirectives } from 'unocss';
+import presetWind4 from '@unocss/preset-wind4';
+import { defineConfig, presetIcons, presetTypography } from 'unocss';
 
 export default defineConfig({
   safelist: [
@@ -9,11 +10,8 @@ export default defineConfig({
       second: '#E2E2E2',
     },
   },
-  transformers: [
-    transformerDirectives(),
-  ],
   presets: [
-    presetUno({
+    presetWind4({
       dark: 'class',
     }),
     presetTypography({

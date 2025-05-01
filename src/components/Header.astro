@@ -22,15 +22,13 @@ const links = [
 >
   <nav class="flex items-center justify-between mx-auto xl:max-w-3xl">
     <div>
-      <a class="text-black dark:text-white font-bold text-lg" href="/">
-        Mingeme
-      </a>
+      <a class="text-black dark:text-white font-bold text-lg" href="/"> Mingeme </a>
     </div>
     <div class="flex space-x-4 items-center">
       <div class="flex">
         {links.map((link) => <Link url={link.url} title={link.title} />)}
       </div>
-      <div class="flex items-center space-x-2">
+      <!-- <div class="flex items-center space-x-2">
         <div
           id="theme-btn"
           aria-label="Toggle dark mode"
@@ -38,7 +36,7 @@ const links = [
         >
         </div>
         <span class="text-gray-400 hover:text-white transition-colors"></span>
-      </div>
+      </div> -->
     </div>
   </nav>
 </header>

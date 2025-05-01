@@ -18,11 +18,7 @@ const allPosts = (await getCollection('posts'))
   <div class="h-full xl:max-w-3xl mx-auto md:px-0 dark:bg-dark">
     <div>
       <div class="flex flex-col">
-        {
-          allPosts.map((post) => (
-            <PostCard url={post.slug} frontmatter={post.data} />
-          ))
-        }
+        {allPosts.map((post) => <PostCard url={post.slug} frontmatter={post.data} />)}
       </div>
     </div>
   </div>

@@ -235,14 +235,8 @@
       const imgRect = img.getBoundingClientRect();
       const viewerRect = viewer.getBoundingClientRect();
 
-      const maxX = Math.max(
-        0,
-        (imgRect.width * currentScale - viewerRect.width) / 2,
-      );
-      const maxY = Math.max(
-        0,
-        (imgRect.height * currentScale - viewerRect.height) / 2,
-      );
+      const maxX = Math.max(0, (imgRect.width * currentScale - viewerRect.width) / 2);
+      const maxY = Math.max(0, (imgRect.height * currentScale - viewerRect.height) / 2);
 
       return {
         x: Math.max(Math.min(x, maxX), -maxX),
@@ -258,10 +252,7 @@
           e.preventDefault();
           const touch1 = e.touches[0];
           const touch2 = e.touches[1];
-          lastTouchDistance = Math.hypot(
-            touch2.clientX - touch1.clientX,
-            touch2.clientY - touch1.clientY,
-          );
+          lastTouchDistance = Math.hypot(touch2.clientX - touch1.clientX, touch2.clientY - touch1.clientY);
         } else if (e.touches.length === 1 && currentScale > 1) {
           e.preventDefault();
           isDragging = true;
@@ -280,10 +271,7 @@
           e.preventDefault();
           const touch1 = e.touches[0];
           const touch2 = e.touches[1];
-          const currentDistance = Math.hypot(
-            touch2.clientX - touch1.clientX,
-            touch2.clientY - touch1.clientY,
-          );
+          const currentDistance = Math.hypot(touch2.clientX - touch1.clientX, touch2.clientY - touch1.clientY);
 
           if (lastTouchDistance > 0) {
             const delta = currentDistance / lastTouchDistance;
@@ -319,15 +307,14 @@
       }
     });
 
-    img.addEventListener('touchcancel', (e) => {
+    img.addEventListener('touchcancel', (_e) => {
       lastTouchDistance = 0;
       isDragging = false;
     });
 
     prevBtn.addEventListener('click', (e) => {
       e.stopPropagation();
-      currentIndex =
-        (currentIndex - 1 + articleImages.length) % articleImages.length;
+      currentIndex = (currentIndex - 1 + articleImages.length) % articleImages.length;
       showImage(currentIndex);
     });
 

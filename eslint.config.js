@@ -12,6 +12,12 @@ export default antfu({
     semi: true,
   },
 
+  // Override specific rules to match existing code style
+  rules: {
+    'style/brace-style': 'off',
+    'style/operator-linebreak': 'off',
+  },
+
   typescript: true,
   astro: true,
   unocss: true,
