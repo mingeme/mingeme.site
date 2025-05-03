@@ -1,5 +1,6 @@
 ---
 import Link from './Link.astro';
+import ThemeToggle from './ThemeToggle.astro';
 
 const links = [
   {
@@ -18,25 +19,19 @@ const links = [
 ---
 
 <header
-  class="sticky top-0 z-40 py-3 px-4 md:px-6 lg:px-8 overflow-x-hidden supports-backdrop-blur:bg-white/95 bg-white/75 backdrop-blur dark:bg-dark shadow"
+  class="sticky top-0 z-40 py-4 overflow-x-hidden supports-backdrop-blur:bg-background/95 bg-background/80 backdrop-blur shadow border-b border-border"
 >
-  <nav class="flex items-center justify-between mx-auto xl:max-w-3xl">
-    <div>
-      <a class="text-black dark:text-white font-bold text-lg" href="/"> Mingeme </a>
-    </div>
-    <div class="flex space-x-4 items-center">
-      <div class="flex">
-        {links.map((link) => <Link url={link.url} title={link.title} />)}
+  <div class="container px-4 mx-auto">
+    <div class="flex items-center justify-between">
+      <div>
+        <a class="font-medium text-xl tracking-tight" href="/"> Mingeme </a>
       </div>
-      <!-- <div class="flex items-center space-x-2">
-        <div
-          id="theme-btn"
-          aria-label="Toggle dark mode"
-          class="hover:cursor-pointer hover:bg-gray-700 dark:hover:bg-white focus:ring-2 focus:ring-gray-600 focus:outline-none rounded-full p-2 transition-colors w-5 h-5 bg-dark dark:bg-white i-carbon-sun dark:i-carbon-moon"
-        >
+      <nav class="flex space-x-4 items-center">
+        <div class="flex items-center space-x-4">
+          {links.map((link) => <Link url={link.url} title={link.title} />)}
+          <ThemeToggle />
         </div>
-        <span class="text-gray-400 hover:text-white transition-colors"></span>
-      </div> -->
+      </nav>
     </div>
-  </nav>
+  </div>
 </header>

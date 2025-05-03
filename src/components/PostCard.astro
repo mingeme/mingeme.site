@@ -1,29 +1,36 @@
 ---
-import moment from 'moment-timezone';
+import dayjs from 'dayjs';
+import utc from 'dayjs/plugin/utc';
+import timezone from 'dayjs/plugin/timezone';
+import localizedFormat from 'dayjs/plugin/localizedFormat';
+import 'dayjs/locale/zh-cn';
+import Badge from './ui/badge.astro';
+
+dayjs.extend(utc);
+dayjs.extend(timezone);
+dayjs.extend(localizedFormat);
+dayjs.locale('zh-cn');
 
 const { url, frontmatter } = Astro.props;
 ---
 
-<div class="overflow-hidden transition-all duration-300 dark:bg-dark">
+<div class="overflow-hidden transition-all duration-300">
   <a href={`/posts/${url}`}>
     <div class="py-2">
-      <h2 class="text-xl font-bold text-gray-900 dark:text-white">
+      <h2 class="text-xl font-bold text-foreground">
         {frontmatter.title}
       </h2>
       <div class="flex flex-wrap gap-2 mt-2">
         {
           frontmatter.tags.map((tag: string) => (
-            <div class="text-xs px-2 py-1 bg-gray-50 dark:bg-gray-800 text-gray-600 dark:text-gray-300 rounded hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors duration-200">
+            <Badge variant="outline" class="rounded-full text-xs font-medium">
               {tag}
-            </div>
+            </Badge>
           ))
         }
       </div>
-      <p class="mt-2 text-gray-600 dark:text-gray-400">
-        {frontmatter.description}
-      </p>
-      <div class="mt-4 text-sm text-gray-500 dark:text-gray-400">
-        {moment(frontmatter.pubDate).tz('Asia/Shanghai').locale('zh-cn').format('ll')}
+      <div class="mt-4 text-sm text-gray-500">
+        {dayjs(frontmatter.pubDate).tz('Asia/Shanghai').format('ll')}
       </div>
     </div>
   </a>

@@ -21,7 +21,7 @@ const { headings } = Astro.props;
   <!-- 移动端目录按钮 -->
   <button
     id="toc-toggle"
-    class="xl:hidden fixed right-4 bottom-4 bg-gray-800/90 dark:bg-gray-700/90 text-white p-3 rounded-full shadow-lg hover:bg-gray-700 dark:hover:bg-gray-600 transition-all hover:scale-105 active:scale-95 z-50"
+    class="xl:hidden fixed right-4 bottom-4 bg-gray-800/90 dark:bg-gray-700/90 text-accent p-3 rounded-full shadow-lg hover:bg-gray-700 dark:hover:bg-gray-600 transition-all hover:scale-105 active:scale-95 z-50"
     aria-label="Toggle table of contents"
   >
     <div class="w-5 h-5 i-carbon-list"></div>
@@ -30,7 +30,7 @@ const { headings } = Astro.props;
   <!-- 移动端抽屉式目录 -->
   <div
     id="toc-drawer"
-    class="xl:hidden fixed inset-y-0 right-0 w-72 bg-white/90 dark:bg-gray-800/90 backdrop-blur transform translate-x-full transition-all duration-300 ease-out z-40 overflow-y-auto scrollbar-thin scrollbar-track-transparent scrollbar-thumb-gray-300 dark:scrollbar-thumb-gray-600"
+    class="xl:hidden fixed inset-y-0 right-0 w-72 bg-background/90 dark:bg-gray-800/90 backdrop-blur transform translate-x-full transition-all duration-300 ease-out z-40 overflow-y-auto scrollbar-thin scrollbar-track-transparent scrollbar-thumb-gray-300 dark:scrollbar-thumb-gray-600"
   >
     <div class="p-6">
       <div class="text-lg font-medium mb-4 text-gray-900 dark:text-gray-100">目录</div>

@@ -3,7 +3,7 @@ import { getCollection } from 'astro:content';
 import PostCard from '../components/PostCard.astro';
 import BaseLayout from '../layouts/BaseLayout.astro';
 
-const pageTitle = `Mingeme's miscellaneous talks`;
+const title = `Mingeme's miscellaneous talks`;
 
 const allPosts = (await getCollection('posts'))
   .filter((post) => post.data.public && post.data.misc)
@@ -14,8 +14,8 @@ const allPosts = (await getCollection('posts'))
   });
 ---
 
-<BaseLayout pageTitle={pageTitle}>
-  <div class="h-full xl:max-w-3xl mx-auto md:px-0 dark:bg-dark">
+<BaseLayout title={title}>
+  <div class="h-full xl:max-w-3xl mx-auto md:px-0">
     <div>
       <div class="flex flex-col">
         {allPosts.map((post) => <PostCard url={post.slug} frontmatter={post.data} />)}

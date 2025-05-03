@@ -1,8 +1,17 @@
 ---
-import moment from 'moment-timezone';
+import dayjs from 'dayjs';
+import utc from 'dayjs/plugin/utc';
+import timezone from 'dayjs/plugin/timezone';
+import localizedFormat from 'dayjs/plugin/localizedFormat';
+import 'dayjs/locale/zh-cn';
 import BaseLayout from './BaseLayout.astro';
 import ImageViewer from '../components/ImageViewer.astro';
 import TableOfContents from '../components/TableOfContents.astro';
+
+dayjs.extend(utc);
+dayjs.extend(timezone);
+dayjs.extend(localizedFormat);
+dayjs.locale('zh-cn');
 
 const { title, pubDate, headings } = Astro.props;
 const allHeadings = [
@@ -15,35 +24,30 @@ const allHeadings = [
 ];
 ---
 
-<BaseLayout pageTitle={`${title} | Mingeme's blog`}>
-  <div class="max-w-4xl mx-auto px-4 py-8">
-    <article class="prose dark:prose-invert prose-truegray lg:prose-lg mx-auto">
-      <header class="mb-8">
-        <h1 id="title" class="mb-4">{title}</h1>
-        <div class="flex items-center gap-4 text-gray-600 dark:text-gray-400 text-sm">
-          <div class="flex items-center gap-1">
-            <div class="i-carbon-calendar w-4 h-4"></div>
-            <time datetime={pubDate}>
-              {moment(pubDate).tz('Asia/Shanghai').locale('zh-cn').format('ll')}
-            </time>
-          </div>
-          <div class="flex items-center gap-1">
-            <div class="i-carbon-time w-4 h-4"></div>
-            <span class="text-nowrap">
-              {moment(pubDate).tz('Asia/Shanghai').locale('zh-cn').format('HH:mm')}
+<BaseLayout title={`${title} | Mingeme's blog`}>
+  <ImageViewer />
+  <article class="py-8 md:py-12">
+    <div class="container px-4 mx-auto">
+      <div class="max-w-3xl mx-auto">
+        <!-- Post Header -->
+        <div class="mb-8 text-center">
+          <h1 class="text-4xl md:text-5xl font-medium mb-6 tracking-tight">
+            {title}
+          </h1>
+          <div class="flex items-center justify-center space-x-2 mb-3">
+            <span class="text-xs text-muted-foreground">
+              {dayjs(pubDate).tz('Asia/Shanghai').format('lll')}
             </span>
           </div>
         </div>
-      </header>
 
-      <TableOfContents headings={allHeadings} />
-
-      <div class="mt-8">
-        <slot />
+        <!-- Post Content -->
+        <div class="prose prose-lg dark:prose-invert max-w-none">
+          <slot />
+        </div>
       </div>
-    </article>
-  </div>
-  <ImageViewer />
+    </div>
+  </article>
 </BaseLayout>
 
 <script is:inline>
@@ -61,7 +65,7 @@ const allHeadings = [
 
       const copyButton = document.createElement('button');
       copyButton.className =
-        'copy-code absolute right-3 -top-3 rounded bg-white text-gray-900 dark:bg-dark dark:text-white px-2 py-1 text-xs leading-4 font-medium border-1 border-gray-300';
+        'copy-code absolute right-3 -top-3 rounded bg-background text-gray-900 dark:bg-dark px-2 py-1 text-xs leading-4 font-medium border-1 border-gray-300';
       copyButton.innerHTML = copyButtonLabel;
       codeBlock.setAttribute('tabindex', '0');
       codeBlock.appendChild(copyButton);

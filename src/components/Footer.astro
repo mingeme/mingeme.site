@@ -1,12 +1,38 @@
-<footer class="dark:bg-dark py-2 text-center text-black dark:text-gray-400">
-  <div class="container mx-auto px-4 md:px-6 lg:px-8">
-    <p>
-      © 2024-2025 Mingeme. All rights reserved. Powered by <a
-        class="underline font-bold dark:text-blue-400"
-        href="https://astro.build/"
+---
+const currentYear = new Date().getFullYear();
+---
+
+<footer class="mt-10 py-6 border-t border-border/40">
+  <div class="container mx-auto px-4 space-y-6">
+    <div class="flex items-center justify-center gap-4">
+      <a
+        title="Github"
+        href="https://github.com/mingeme"
+        target="_blank"
+        class="text-sm text-gray-500 transition hover:text-gray-600"
+        rel="noopener noreferrer"
       >
-        Astro</a
+        <span class="sr-only">Github</span>
+        <div class="w-6 h-6 text-gray-700 hover:text-blue-500 i-carbon-logo-github"></div>
+      </a>
+      <a
+        title="微博"
+        href="https://weibo.com/u/2140718862"
+        target="_blank"
+        class="text-sm text-gray-500 transition hover:text-gray-600"
+        rel="noopener noreferrer"
       >
-    </p>
+        <span class="sr-only">微博</span>
+        <div class="w-6 h-6 text-gray-700 hover:text-blue-500 i-mdi:sina-weibo"></div>
+      </a>
+    </div>
+    <div class="text-sm text-muted-foreground text-center">
+      <p>
+        © 2024-{currentYear} Mingeme. All rights reserved.
+      </p>
+      <p>
+        Powered by <a class="underline font-bold dark:text-blue-400" href="https://astro.build/"> Astro</a>.
+      </p>
+    </div>
   </div>
 </footer>
