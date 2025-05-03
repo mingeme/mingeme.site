@@ -1,15 +1,18 @@
 ---
+import UILink from './ui/link.astro';
+
+interface Props {
+  title: string;
+  url: string;
+}
+
 const { title, url } = Astro.props;
 
 const { pathname } = Astro.url;
-const subpath = pathname.match(/[^\/]+/g);
+const subpath = pathname.match(/[^/]+/g);
 const isActive = url === pathname || url === '/' + subpath?.[0];
 ---
 
-<a
-  href={url}
-  rel="noopener noreferrer"
-  class:list={['px-2 transition-colors', isActive ? 'text-foreground font-medium' : 'text-gray-600 hover:text-accent']}
->
+<UILink href={url} rel="noopener noreferrer" isActive={isActive}>
   {title}
-</a>
+</UILink>

@@ -10,10 +10,10 @@ interface Props extends astroHTML.JSX.ButtonHTMLAttributes {
 const {
   variant = 'default',
   size = 'default',
-  class: className,
   type = 'button',
   disabled = false,
-  ...rest
+  class: className,
+  ...props
 } = Astro.props as Props;
 
 const buttonVariants = cva(
@@ -45,6 +45,6 @@ const buttonVariants = cva(
 const classes = cn(buttonVariants({ variant, size }), className);
 ---
 
-<button class={classes} type={type} disabled={disabled} {...rest}>
+<button class={classes} type={type} disabled={disabled} {...props}>
   <slot />
 </button>

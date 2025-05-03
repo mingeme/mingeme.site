@@ -2,12 +2,11 @@
 import { cva } from 'class-variance-authority';
 import { cn } from '../../lib/utils';
 
-interface Props {
+interface Props extends astroHTML.JSX.HTMLAttributes {
   variant?: 'default' | 'secondary' | 'destructive' | 'outline';
-  class?: string;
 }
 
-const { variant = 'default', class: className, ...rest } = Astro.props as Props;
+const { variant = 'default', class: className, ...props } = Astro.props as Props;
 
 const badgeVariants = cva(
   'inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2',
@@ -29,6 +28,6 @@ const badgeVariants = cva(
 const classes = cn(badgeVariants({ variant }), className);
 ---
 
-<div class={classes} {...rest}>
+<div class={classes} {...props}>
   <slot />
 </div>

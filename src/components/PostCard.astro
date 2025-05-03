@@ -23,7 +23,7 @@ const { url, frontmatter } = Astro.props;
       <div class="flex flex-wrap gap-2 mt-2">
         {
           frontmatter.tags.map((tag: string) => (
-            <Badge variant="outline" class="rounded-full text-xs font-medium">
+            <Badge variant="secondary" class="rounded-full text-xs font-medium">
               {tag}
             </Badge>
           ))
