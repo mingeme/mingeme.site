@@ -56,7 +56,6 @@ const allHeadings = [
    * allowing users to copy code easily.
    */
   function attachCopyButtons() {
-    const copyButtonLabel = '复制';
     const codeBlocks = Array.from(document.querySelectorAll('pre'));
 
     for (const codeBlock of codeBlocks) {
@@ -65,8 +64,15 @@ const allHeadings = [
 
       const copyButton = document.createElement('button');
       copyButton.className =
-        'copy-code absolute right-3 -top-3 rounded bg-background text-gray-900 dark:bg-dark px-2 py-1 text-xs leading-4 font-medium border-1 border-gray-300';
-      copyButton.innerHTML = copyButtonLabel;
+        'absolute right-3 top-3 rounded bg-background text-foreground p-1.5 text-xs leading-4 font-medium border-1 border-border hover:bg-muted transition-colors';
+      copyButton.setAttribute('aria-label', '复制代码');
+      copyButton.setAttribute('title', '复制代码');
+
+      // 添加复制图标
+      const copyIcon = document.createElement('div');
+      copyIcon.className = 'i-carbon-copy w-4 h-4';
+      copyButton.appendChild(copyIcon);
+
       codeBlock.setAttribute('tabindex', '0');
       codeBlock.appendChild(copyButton);
 
@@ -75,37 +81,34 @@ const allHeadings = [
       wrapper.appendChild(codeBlock);
 
       copyButton.addEventListener('click', async () => {
-        await copyCode(codeBlock, copyButton);
+        await copyCode(codeBlock, copyButton, copyIcon);
       });
     }
 
-    async function copyCode(block, button) {
+    async function copyCode(block, button, icon) {
       const code = block.querySelector('code');
       const text = code.textContent;
 
       await navigator.clipboard.writeText(text);
 
-      // visual feedback that task is completed
-      button.textContent = '已复制';
+      // 选中代码块
+      const range = document.createRange();
+      range.selectNodeContents(code);
+      const selection = window.getSelection();
+      selection.removeAllRanges();
+      selection.addRange(range);
+
+      // 替换图标为复制成功图标
+      icon.className = 'i-carbon-checkmark w-4 h-4';
+      button.classList.add('text-accent');
 
       setTimeout(() => {
-        button.textContent = copyButtonLabel;
-      }, 700);
+        // 恢复原始图标
+        icon.className = 'i-carbon-copy w-4 h-4';
+        button.classList.remove('text-accent');
+      }, 1500);
     }
   }
   attachCopyButtons();
   document.addEventListener('astro:after-swap', attachCopyButtons);
-
-  /**
-   * Scrolls the document to the top when
-   * the "Back to Top" button is clicked.
-   */
-  function backToTop() {
-    document.querySelector('#back-to-top')?.addEventListener('click', () => {
-      document.body.scrollTop = 0; // For Safari
-      document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
-    });
-  }
-  backToTop();
-  document.addEventListener('astro:after-swap', backToTop);
 </script>
