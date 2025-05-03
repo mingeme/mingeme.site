@@ -160,6 +160,12 @@
 <script is:inline>
   function initImageViewer() {
     const viewer = document.querySelector('.image-viewer');
+
+    // 检查 viewer 元素是否存在，如果不存在则退出函数
+    if (!viewer) {
+      return;
+    }
+
     const img = viewer.querySelector('img');
     const prevBtn = viewer.querySelector('.nav-button.prev');
     const nextBtn = viewer.querySelector('.nav-button.next');
@@ -364,6 +370,11 @@
     };
   }
 
+  // 初始化
   initImageViewer();
-  document.addEventListener('astro:after-swap', initImageViewer);
+
+  // 在页面加载和视图转换后重新初始化
+  document.addEventListener('astro:page-load', initImageViewer);
+
+  // 移除 astro:after-swap 事件监听器，因为我们已经使用了 astro:page-load
 </script>
