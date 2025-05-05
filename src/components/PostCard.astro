@@ -29,7 +29,7 @@ const { url, frontmatter } = Astro.props;
           ))
         }
       </div>
-      <div class="mt-4 text-sm text-gray-500">
+      <div class="mt-4 text-sm text-muted-foreground">
         {dayjs(frontmatter.pubDate).tz('Asia/Shanghai').format('ll')}
       </div>
     </div>
