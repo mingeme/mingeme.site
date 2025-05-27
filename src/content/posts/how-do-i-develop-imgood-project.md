@@ -45,13 +45,13 @@ tags:
 历经几次迭代，在 Cursor 和 Windsurf 之间反复横跳，两个编辑器都尝试了一遍，功能上重叠度很高，平分秋色，个人更偏向于使用 Windsurf。开发细节就不过多描述，主要是使用 AI 编辑器的心得。
 
 1、Cursor 除了设置全局的提示词外，还支持设置项目级别的提示词`.cursorrules`文件放在根目录下，GitHub 上有个项目 [awesome-cursorrules](https://github.com/PatrickJS/awesome-cursorrules)提供了常用的提示词模板，这里使用的是[svelte-5-vs-svelte-4-cursorrules-prompt-file](https://github.com/PatrickJS/awesome-cursorrules/blob/main/rules/svelte-5-vs-svelte-4-cursorrules-prompt-file/.cursorrules)。
-![uyVBNNS.png](https://imgood.s3.bitiful.net/2025/1/5/uyVBNNS?fmt=webp)
+![uyVBNNS.webp](https://imgood.s3.bitiful.net/2025/1/5/uyVBNNS.webp)
 
 2、做好功能拆分，尽可能把功能拆分的小一些，尽量保证一个文件代码行数不超过500行，尽可能模块化有利于 AI 理解。大模型上下文长度有限，过长会导致代码检索不完全。AI 对话长了之后会出现降智，这时候就需要不断纠错和调整，建议每个功能新开一个对话，避免上下文污染。
 
 3、代码提交信息通过 AI 生成。可以看到生成的提交信息符合规范，描述的也准确，至少比我自己写的蹩脚英文描述要好了些，从开发质量和效率来说是一个极大的进步。
 
-![uyYf5B7.png](https://imgood.s3.bitiful.net/2025/1/5/uyYf5B7?fmt=webp)
+![uyYf5B7.webp](https://imgood.s3.bitiful.net/2025/1/5/uyYf5B7.webp)
 
 ## 项目部署
 
@@ -60,21 +60,21 @@ tags:
 选择 Vercel 托管。
 
 1、从 GitHub 导入项目
-![uyYkF5s.png](https://imgood.s3.bitiful.net/2025/1/5/uyYkF5s?fmt=webp)
+![uyYkF5s.webp](https://imgood.s3.bitiful.net/2025/1/5/uyYkF5s.webp)
 
 2、配置构建参数
 
 这里使用默认配置，vercel 这点做的比较好自动识别了项目框架，基本都配置好了。
-![uyZlS8F.png](https://imgood.s3.bitiful.net/2025/1/5/uyZlS8F?fmt=webp)
+![uyZlS8F.webp](https://imgood.s3.bitiful.net/2025/1/5/uyZlS8F.webp)
 
 选则构建的 Node 版本，创建项目的时候默认给我选了 22.x，Svelte 不支持导致构建失败，所以我改成了 20.x。
-![uyZmUYV.png](https://imgood.s3.bitiful.net/2025/1/5/uyZmUYV?fmt=webp)
+![uyZmUYV.webp](https://imgood.s3.bitiful.net/2025/1/5/uyZmUYV.webp)
 
 3、配置环境变量
 
 配置 OSS 的地址和访问密钥，Supabase 的地址和访问密钥。
 
-![uyZlga6.png](https://imgood.s3.bitiful.net/2025/1/5/uyZlga6?fmt=webp)
+![uyZlga6.webp](https://imgood.s3.bitiful.net/2025/1/5/uyZlga6.webp)
 
 ### 域名
 
@@ -85,7 +85,7 @@ tags:
 使用 Cloudflare 进行解析域名，增强网站的防护能力。
 
 1、添加域，我这里已经添加过了，使用的免费计划。
-![uz0HPZf.png](https://imgood.s3.bitiful.net/2025/1/5/uz0HPZf?fmt=webp)
+![uz0HPZf.webp](https://imgood.s3.bitiful.net/2025/1/5/uz0HPZf.webp)
 
 2、添加域名解析记录，指向 Vercel 的域名服务器，这样可以绕过 GFW，在国内访问。
 
@@ -93,7 +93,7 @@ tags:
 
 添加 CNAME 记录，指向`www`，内容为`cname-china.vercel-dns.com`，如果不需要`www`二级域名，可以不添加。
 
-![uz0IgqB.png](https://imgood.s3.bitiful.net/2025/1/5/uz0IgqB?fmt=webp)
+![uz0IgqB.webp](https://imgood.s3.bitiful.net/2025/1/5/uz0IgqB.webp)
 
 3、Namecheap 配置域名服务器，使用上一步 Cloudflare 提供的名称服务器。
 
@@ -101,20 +101,20 @@ dylan.ns.cloudflare.com
 
 marge.ns.cloudflare.com
 
-![uz0Jwhf.png](https://imgood.s3.bitiful.net/2025/1/5/uz0Jwhf?fmt=webp)
+![uz0Jwhf.webp](https://imgood.s3.bitiful.net/2025/1/5/uz0Jwhf.webp)
 
 4、在 Vercel 上添加域名，虽然 Vercel 推荐第一个，但是我这里选择了第二个，重定向`www`到根域名。
 
-![uz0KZCH.png](https://imgood.s3.bitiful.net/2025/1/5/uz0KZCH?fmt=webp)
+![uz0KZCH.webp](https://imgood.s3.bitiful.net/2025/1/5/uz0KZCH.webp)
 
 5、配置加密模式，使用 HTTPS，选择`完全`模式，如果出现重定向问题，可以尝试选择`完全（严格）`模式。
 
-![uz0LVDW.png](https://imgood.s3.bitiful.net/2025/1/5/uz0LVDW?fmt=webp)
+![uz0LVDW.webp](https://imgood.s3.bitiful.net/2025/1/5/uz0LVDW.webp)
 
 至此，配置完后，可以访问[imgood.ink](https://imgood.ink)。
-![uz0NPnX.jpeg](https://imgood.s3.bitiful.net/2025/1/5/uz0NPnX?fmt=webp)
+![uz0NPnX.webp](https://imgood.s3.bitiful.net/2025/1/5/uz0NPnX.webp)
 附上效果图，哈哈这是我第一次看演唱会，2024年最后一场广州站，陶喆老 baby 风韵犹存。
-![uz0NED7.jpeg](https://imgood.s3.bitiful.net/2025/1/5/uz0NED7?fmt=webp)
+![uz0NED7.webp](https://imgood.s3.bitiful.net/2025/1/5/uz0NED7.webp)
 
 ## 结语
 
