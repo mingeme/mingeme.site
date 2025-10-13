@@ -4,8 +4,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
 <BaseLayout title={`关于 | Mingeme's blog`}>
   <main class="flex justify-center px-4 py-12 sm:px-6 lg:px-8 lg:py-20">
-    <div class="w-full max-w-3xl text-[#211811]/90">
-      <h1 class="text-center text-4xl font-bold text-[#e66e19] sm:text-5xl">关于我</h1>
+    <div class="w-full max-w-3xl text-text-light/90">
+      <h1 class="text-center text-4xl font-bold text-primary sm:text-5xl">关于我</h1>
       <div class="mt-12 space-y-8 text-lg leading-relaxed tracking-wide">
         <p>
           你好，我是 Mingeme，一名全栈工程师，也是一个不太执着的记录者。白天在互联网行业写代码，夜里把
@@ -14,7 +14,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         <p>
           如果你想联系我，最好的方式是发邮件到
           <a
-            class="text-[#e66e19] underline decoration-transparent transition hover:decoration-[#e66e19]"
+            class="text-primary underline decoration-transparent transition hover:decoration-primary"
             href="mailto:mingeme00@outlook.com"
           >
             mingeme00@outlook.com
@@ -23,22 +23,22 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         </p>
       </div>
 
-      <section class="mt-16 space-y-6 rounded-2xl border border-[#e66e19]/20 bg-white/80 p-8 shadow-sm">
-        <h2 class="text-2xl font-semibold text-[#211811]">正在或将要做的事</h2>
-        <p class="text-sm text-[#211811]/60">最近更新：2025年10月13日</p>
-        <ul class="space-y-3 text-base text-[#211811]/80">
+      <section class="mt-16 space-y-6 rounded-2xl border border-primary/20 bg-white/80 p-8 shadow-sm">
+        <h2 class="text-2xl font-semibold text-text-light">正在或将要做的事</h2>
+        <p class="text-sm text-text-light/60">最近更新：2025年10月13日</p>
+        <ul class="space-y-3 text-base text-text-light/80">
           <li>· 跟进 AI 动态的最新时事，保持对新事物的好奇。</li>
           <li>· 坚持每周三次跑步，保持良好的身体状态。</li>
           <li>· 学习摄影和剪辑，希望把记录扩展到声音和影像。</li>
         </ul>
       </section>
 
-      <section class="mt-12 space-y-6 rounded-2xl border border-[#e66e19]/20 bg-[#e66e19]/5 p-8">
-        <h2 class="text-2xl font-semibold text-[#211811]">关于本站</h2>
-        <ul class="space-y-3 text-base text-[#211811]/80">
+      <section class="mt-12 space-y-6 rounded-2xl border border-primary/20 bg-primary/5 p-8">
+        <h2 class="text-2xl font-semibold text-text-light">关于本站</h2>
+        <ul class="space-y-3 text-base text-text-light/80">
           <li>
             · 部署在 <a
-              class="text-[#e66e19] underline"
+              class="text-primary underline"
               href="https://vercel.com"
               target="_blank"
               rel="noopener noreferrer">Vercel</a
@@ -46,23 +46,25 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           </li>
           <li>
             · 使用 <a
-              class="text-[#e66e19] underline"
+              class="text-primary underline"
               href="https://astro.build"
               target="_blank"
               rel="noopener noreferrer">Astro</a
             >
             + <a
-              class="text-[#e66e19] underline"
+              class="text-primary underline"
               href="https://tailwindcss.com"
               target="_blank"
-              rel="noopener noreferrer">Tailwind CSS v4</a
+              rel="noopener noreferrer"
             >
+              Tailwind CSS v4
+            </a>
           </li>
           <li>· 域名来自 Namecheap，解析交给 Cloudflare</li>
           <li>
             · 源码开源在
             <a
-              class="text-[#e66e19] underline"
+              class="text-primary underline"
               href="https://github.com/mingeme/mingeme.site"
               target="_blank"
               rel="noopener noreferrer"

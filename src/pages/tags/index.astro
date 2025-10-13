@@ -32,21 +32,21 @@ const tags = Array.from(tagCounter.entries())
 <BaseLayout title={`标签 | Mingeme's blog`}>
   <div class="mx-auto w-full max-w-4xl px-4 py-12 sm:px-6 lg:px-8 lg:py-16">
     <section class="text-center">
-      <h1 class="text-4xl font-bold text-[#e66e19] sm:text-5xl">标签</h1>
-      <p class="mt-4 text-base text-[#211811]/70">
-        按标签快速浏览文章。目前共收录 <span class="font-semibold text-[#e66e19]">{tags.length}</span> 个标签。
+      <h1 class="text-4xl font-bold text-primary sm:text-5xl">标签</h1>
+      <p class="mt-4 text-base text-text-light/70">
+        按标签快速浏览文章。目前共收录 <span class="font-semibold text-primary">{tags.length}</span> 个标签。
       </p>
     </section>
 
     {
       tags.length === 0 ? (
-        <p class="mt-12 text-center text-sm text-[#211811]/60">暂时还没有标签，期待新的内容出现。</p>
+        <p class="mt-12 text-center text-sm text-text-light/60">暂时还没有标签，期待新的内容出现。</p>
       ) : (
         <div class="mt-12 flex flex-wrap justify-center gap-x-6 gap-y-4">
           {tags.map((tag) => (
-            <a href={tag.href} class="px-3 py-1.5 text-base font-medium text-[#211811] transition hover:text-[#e66e19]">
+            <a href={tag.href} class="px-3 py-1.5 text-base font-medium text-text-light transition hover:text-primary">
               {tag.name}
-              <span class="ml-1 text-[#e66e19]/60">({tag.count})</span>
+              <span class="ml-1 text-primary/60">({tag.count})</span>
             </a>
           ))}
         </div>

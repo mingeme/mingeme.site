@@ -18,24 +18,24 @@ const description = frontmatter.description ?? frontmatter.subtitle ?? '';
 
 <a
   href={`/posts/${url}`}
-  class="block rounded-xl border border-transparent bg-white/90 p-6 transition duration-300 hover:-translate-y-1 hover:border-[#e66e19]/40 hover:bg-[#e66e19]/5"
+  class="block rounded-xl border border-transparent bg-white/90 p-6 transition duration-300 hover:-translate-y-1 hover:border-primary/40 hover:bg-primary/5"
 >
   <div class="flex flex-col gap-3">
-    <h3 class="text-xl font-semibold text-[#211811] transition-colors">
+    <h3 class="text-xl font-semibold text-text-light transition-colors">
       {frontmatter.title}
     </h3>
-    {description && <p class="text-sm leading-relaxed text-[#211811]/70">{description}</p>}
+    {description && <p class="text-sm leading-relaxed text-text-light/70">{description}</p>}
     {
       tags.length > 0 && (
         <div class="flex flex-wrap gap-2">
           {tags.map((tag: string) => (
-            <span class="rounded-full border border-[#e66e19]/20 bg-[#e66e19]/5 px-3 py-1 text-xs font-medium text-[#e66e19]">
+            <span class="rounded-full border border-primary/20 bg-primary/5 px-3 py-1 text-xs font-medium text-primary">
               #{tag}
             </span>
           ))}
         </div>
       )
     }
-    <p class="text-sm text-[#211811]/50">{formattedDate}</p>
+    <p class="text-sm text-text-light/50">{formattedDate}</p>
   </div>
 </a>

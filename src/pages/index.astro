@@ -18,8 +18,8 @@ const latestPosts = allPosts.slice(0, 6);
 <BaseLayout title={title}>
   <div class="mx-auto w-full max-w-4xl space-y-16 px-4 py-12 sm:px-6 lg:px-8 lg:py-16">
     <section class="text-center">
-      <h1 class="text-4xl font-bold leading-tight tracking-tight text-[#e66e19] sm:text-5xl">记录是延长思考的方式</h1>
-      <p class="mt-6 text-lg leading-relaxed text-[#211811]/70">
+      <h1 class="text-4xl font-bold leading-tight tracking-tight text-primary sm:text-5xl">记录是延长思考的方式</h1>
+      <p class="mt-6 text-lg leading-relaxed text-text-light/70">
         在纷繁的讯息里，我尝试放慢脚步，记录代码与生活的细节。这里收集了那些值得反复推敲的想法，
         也保留了偶尔闪过的灵感。
       </p>
@@ -27,8 +27,8 @@ const latestPosts = allPosts.slice(0, 6);
 
     <section>
       <div class="mb-8 flex items-center justify-between">
-        <h2 class="text-2xl font-bold text-[#211811]">最近文章</h2>
-        <a href="/posts" class="text-sm font-medium text-[#e66e19] transition hover:text-[#c8601d]"> 查看全部 </a>
+        <h2 class="text-2xl font-bold text-text-light">最近文章</h2>
+        <a href="/posts" class="text-sm font-medium text-primary transition hover:text-primary/90"> 查看全部 </a>
       </div>
       <div class="space-y-4">
         {latestPosts.map((post) => <PostCard url={post.slug} frontmatter={post.data} />)}

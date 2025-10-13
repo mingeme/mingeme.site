@@ -34,8 +34,8 @@ const tocHeadings = headings.length
     <div class="mx-auto flex w-full max-w-5xl flex-col gap-12 lg:flex-row">
       <div class="flex-1 lg:min-w-0">
         <header class="mb-12">
-          <p class="text-sm text-[#211811]/60">{displayDate}</p>
-          <h1 id="article-title" class="mt-4 text-4xl font-bold leading-tight text-[#211811] sm:text-5xl">
+          <p class="text-sm text-text-light/60">{displayDate}</p>
+          <h1 id="article-title" class="mt-4 text-4xl font-bold leading-tight text-text-light sm:text-5xl">
             {title}
           </h1>
         </header>
@@ -82,7 +82,7 @@ const tocHeadings = headings.length
 
       const copyButton = document.createElement('button');
       copyButton.className =
-        'absolute right-3 top-3 flex items-center justify-center rounded-full border border-[#211811]/10 bg-white/80 p-2 text-xs text-[#211811]/70 shadow-sm transition hover:bg-white';
+        'absolute right-3 top-3 flex items-center justify-center rounded-full border border-text-light/10 bg-white/80 p-2 text-xs text-text-light/70 shadow-sm transition hover:bg-white';
       copyButton.setAttribute('aria-label', '复制代码');
       copyButton.setAttribute('title', '复制代码');
       copyButton.innerHTML = copySvg;
@@ -117,11 +117,11 @@ const tocHeadings = headings.length
     selection?.addRange(range);
 
     button.innerHTML = checkSvg;
-    button.classList.add('text-[#e66e19]');
+    button.classList.add('text-primary');
 
     setTimeout(() => {
       button.innerHTML = copySvg;
-      button.classList.remove('text-[#e66e19]');
+      button.classList.remove('text-primary');
       selection?.removeAllRanges();
     }, 1500);
   }

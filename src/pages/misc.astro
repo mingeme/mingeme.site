@@ -17,15 +17,15 @@ const allPosts = (await getCollection('posts'))
 <BaseLayout title={title}>
   <div class="mx-auto w-full max-w-4xl space-y-10 px-4 py-12 sm:px-6 lg:px-8 lg:py-16">
     <section class="text-center">
-      <h1 class="text-3xl font-bold text-[#e66e19] sm:text-4xl">杂记</h1>
-      <p class="mt-4 text-base text-[#211811]/70">
+      <h1 class="text-3xl font-bold text-primary sm:text-4xl">杂记</h1>
+      <p class="mt-4 text-base text-text-light/70">
         这里收录日常里不成体系的思考、速记和灵感草稿，节奏更随意，也更个人。
       </p>
     </section>
 
     {
       allPosts.length === 0 ? (
-        <p class="text-center text-sm text-[#211811]/60">暂时还没有内容，等我写点什么。</p>
+        <p class="text-center text-sm text-text-light/60">暂时还没有内容，等我写点什么。</p>
       ) : (
         <div class="space-y-4">
           {allPosts.map((post) => (

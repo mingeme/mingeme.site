@@ -7,10 +7,6 @@ export default {
   ],
   theme: {
     extend: {
-      colors: {
-        'primary': '#e66e19',
-        'background-light': '#f8f7f6',
-      },
       fontFamily: {
         display: ['"Noto Serif SC"', 'serif'],
       },

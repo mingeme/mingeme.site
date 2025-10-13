@@ -20,7 +20,7 @@ const indentClass = (depth: number) => {
 <div class="relative">
   <button
     id="toc-toggle"
-    class="fixed bottom-4 right-4 flex h-12 w-12 items-center justify-center rounded-full border border-[#211811]/10 bg-white/90 text-[#211811] shadow-lg transition hover:bg-[#e66e19]/10 lg:hidden"
+    class="fixed bottom-4 right-4 flex h-12 w-12 items-center justify-center rounded-full border border-text-light/10 bg-white/90 text-text-light shadow-lg transition hover:bg-primary/10 lg:hidden"
     aria-label="打开目录"
   >
     <svg viewBox="0 0 24 24" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="1.6">
@@ -30,10 +30,10 @@ const indentClass = (depth: number) => {
 
   <div
     id="toc-drawer"
-    class="fixed inset-0 z-40 hidden flex-col bg-[#f8f7f6]/95 px-6 py-10 opacity-0 transition-opacity duration-200 backdrop-blur lg:hidden"
+    class="fixed inset-0 z-40 hidden flex-col bg-background-light/95 px-6 py-10 opacity-0 transition-opacity duration-200 backdrop-blur lg:hidden"
   >
     <div class="flex items-center justify-between">
-      <div class="flex items-center gap-2 text-lg font-semibold text-[#211811]">
+      <div class="flex items-center gap-2 text-lg font-semibold text-text-light">
         <svg viewBox="0 0 24 24" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="1.6">
           <path d="M5 7h14M5 12h14M5 17h9" stroke-linecap="round" stroke-linejoin="round"></path>
         </svg>
@@ -42,7 +42,7 @@ const indentClass = (depth: number) => {
       <button
         id="toc-close"
         type="button"
-        class="h-10 w-10 rounded-full border border-[#211811]/10 text-[#211811] transition hover:bg-[#e66e19]/10"
+        class="h-10 w-10 rounded-full border border-text-light/10 text-text-light transition hover:bg-primary/10"
         aria-label="关闭目录"
       >
         <span class="text-xl">&times;</span>
@@ -53,7 +53,7 @@ const indentClass = (depth: number) => {
         headings.map((heading) => (
           <a
             href={`#${heading.slug}`}
-            class={`block rounded-lg px-3 py-2 text-sm text-[#211811]/70 transition hover:bg-[#e66e19]/10 hover:text-[#e66e19] ${indentClass(heading.depth)}`}
+            class={`block rounded-lg px-3 py-2 text-sm text-text-light/70 transition hover:bg-primary/10 hover:text-primary ${indentClass(heading.depth)}`}
           >
             {heading.text}
           </a>
@@ -62,8 +62,8 @@ const indentClass = (depth: number) => {
     </nav>
   </div>
 
-  <aside class="sticky top-28 hidden rounded-2xl border border-[#211811]/10 bg-white/70 p-5 shadow-sm lg:block">
-    <div class="flex items-center gap-2 text-sm font-semibold text-[#211811]">
+  <aside class="sticky top-28 hidden rounded-2xl border border-text-light/10 bg-white/70 p-5 shadow-sm lg:block">
+    <div class="flex items-center gap-2 text-sm font-semibold text-text-light">
       <svg viewBox="0 0 24 24" class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="1.6">
         <path d="M5 7h14M5 12h14M5 17h9" stroke-linecap="round" stroke-linejoin="round"></path>
       </svg>
@@ -74,7 +74,7 @@ const indentClass = (depth: number) => {
         headings.map((heading) => (
           <a
             href={`#${heading.slug}`}
-            class={`block rounded-lg px-3 py-1.5 text-[#211811]/60 transition hover:bg-[#e66e19]/10 hover:text-[#e66e19] ${indentClass(heading.depth)}`}
+            class={`block rounded-lg px-3 py-1.5 text-text-light/60 transition hover:bg-primary/10 hover:text-primary ${indentClass(heading.depth)}`}
           >
             {heading.text}
           </a>

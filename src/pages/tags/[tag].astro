@@ -35,16 +35,16 @@ const title = `${tagName} | 标签归档`;
 <BaseLayout title={title}>
   <div class="mx-auto w-full max-w-4xl space-y-10 px-4 py-12 sm:px-6 lg:px-8 lg:py-16">
     <section class="space-y-3 text-center">
-      <p class="text-sm text-[#211811]/60">标签</p>
-      <h1 class="text-3xl font-bold text-[#e66e19] sm:text-4xl">{tagName}</h1>
-      <p class="text-base text-[#211811]/70">
+      <p class="text-sm text-text-light/60">标签</p>
+      <h1 class="text-3xl font-bold text-primary sm:text-4xl">{tagName}</h1>
+      <p class="text-base text-text-light/70">
         共 {posts.length} 篇文章
       </p>
     </section>
 
     {
       posts.length === 0 ? (
-        <p class="text-center text-sm text-[#211811]/60">暂时还没有归档相关文章。</p>
+        <p class="text-center text-sm text-text-light/60">暂时还没有归档相关文章。</p>
       ) : (
         <div class="space-y-4">
           {posts.map((post) => (
