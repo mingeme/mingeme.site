@@ -1,37 +1,194 @@
 ---
-import Link from './Link.astro';
-import ThemeToggle from './ThemeToggle.astro';
-
-const links = [
-  {
-    url: '/',
-    title: '首页',
-  },
-  {
-    url: '/about',
-    title: '关于',
-  },
-  {
-    url: '/misc',
-    title: '杂谈',
-  },
+const navItems = [
+  { href: '/', label: '首页' },
+  { href: '/about', label: '关于' },
+  { href: '/posts', label: '归档' },
+  { href: '/tags', label: '标签' },
+  { href: '/misc', label: '杂记' },
 ];
+
+const { pathname } = Astro.url;
+
+const isActive = (href: string) => {
+  if (href === '/') {
+    return pathname === '/';
+  }
+  return pathname.startsWith(href);
+};
 ---
 
-<header
-  class="sticky top-0 z-40 py-4 overflow-x-hidden supports-backdrop-blur:bg-background/95 bg-background/80 backdrop-blur shadow border-b border-border"
->
-  <div class="container px-4 mx-auto">
-    <div class="flex items-center justify-between">
-      <div>
-        <a class="font-medium text-xl tracking-tight" href="/"> Mingeme </a>
+<header class="w-full border-b border-black/10 px-4 py-4 sm:px-6 lg:px-12">
+  <div class="mx-auto flex max-w-6xl items-center justify-between gap-4">
+    <a href="/" class="flex items-center gap-3">
+      <span class="flex h-10 w-10 items-center justify-center rounded-full bg-[#e66e19]/10 text-[#e66e19]">
+        <svg class="h-6 w-6" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+          <path
+            d="M12.08 24 4 19.25 9.96 8.75 18.04 13.5 18.04 4h11.92l.01 9.5 8.07-4.75L44 19.25 35.92 24 44 28.75l-5.95 10.5-8.09-4.75L29.96 44H18.04l-.01-9.5-8.07 4.75L4 28.75 12.08 24Z"
+            fill="currentColor"
+            fill-rule="evenodd"
+            clip-rule="evenodd"></path>
+        </svg>
+      </span>
+      <div class="flex flex-col">
+        <span class="text-lg font-bold text-[#211811]">Mingeme</span>
       </div>
-      <nav class="flex space-x-4 items-center">
-        <div class="flex items-center space-x-4">
-          {links.map((link) => <Link url={link.url} title={link.title} />)}
-          <ThemeToggle />
-        </div>
-      </nav>
+    </a>
+    <nav class="hidden items-center gap-8 md:flex">
+      {
+        navItems.map((item) => (
+          <a
+            href={item.href}
+            class={`text-sm font-medium transition-colors ${
+              isActive(item.href) ? 'text-[#e66e19]' : 'text-[#211811]/80 hover:text-[#e66e19]'
+            }`}
+          >
+            {item.label}
+          </a>
+        ))
+      }
+    </nav>
+    <div class="flex items-center gap-3">
+      <div
+        class="hidden h-10 w-10 rounded-full bg-cover bg-center md:block"
+        style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAhj38wzhdsuEhIJGLtwBVwXdk2zLcJTnf6KLvugqOYn0Jz4RQhyHZ4GjInvwpYBYj5WBQP7GRDh1HInRsr3nEp4eQx5h1_I66za3rGObtMOnhUesTcWpUnd9XrkKSk4mwYFZCT-yQSAjyaxuixxJIbVSQiEvzufa0n1E8wRCzbFS_39STBk3TlFOuFxqXnjQ4QvRRGDU9A5ge6h7nB3JyS2DxPCp2LCWGbrUm7L5gkn24184c4QGYIiCgfJPmCZ4M79CzUN-qq4RM");'
+      >
+      </div>
+      <button
+        type="button"
+        data-nav-open
+        class="flex h-10 w-10 items-center justify-center rounded-full border border-black/10 text-[#211811] transition hover:bg-[#e66e19]/10 focus:outline-none focus:ring-2 focus:ring-[#e66e19]/40 md:hidden"
+        aria-label="打开导航菜单"
+      >
+        <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+          <path d="M4 6h16M4 12h16M4 18h16" stroke-linecap="round"></path>
+        </svg>
+      </button>
     </div>
   </div>
 </header>
+
+<div
+  id="mobile-nav-overlay"
+  class="fixed inset-0 z-30 hidden bg-black/20 opacity-0 transition-opacity duration-200 backdrop-blur-sm md:hidden"
+>
+</div>
+
+<nav
+  id="mobile-nav-drawer"
+  class="fixed inset-y-0 right-0 z-40 w-64 translate-x-full bg-white shadow-xl transition-transform duration-200 md:hidden"
+  aria-hidden="true"
+  inert
+>
+  <div class="flex items-center justify-between border-b border-black/10 px-6 py-4">
+    <span class="text-base font-semibold text-[#211811]">导航</span>
+    <button
+      type="button"
+      data-nav-close
+      class="flex h-9 w-9 items-center justify-center rounded-full border border-black/10 text-[#211811] transition hover:bg-[#e66e19]/10 focus:outline-none focus:ring-2 focus:ring-[#e66e19]/30"
+      aria-label="关闭导航菜单"
+    >
+      <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+        <path d="m7 7 10 10M17 7 7 17" stroke-linecap="round"></path>
+      </svg>
+    </button>
+  </div>
+  <div class="px-6 py-6">
+    <ul class="space-y-4">
+      {
+        navItems.map((item) => (
+          <li>
+            <a
+              href={item.href}
+              class={`block text-base font-medium ${
+                isActive(item.href) ? 'text-[#e66e19]' : 'text-[#211811]/80 hover:text-[#e66e19]'
+              }`}
+            >
+              {item.label}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</nav>
+
+<script is:inline>
+  const TRANSITION_MS = 200;
+
+  function setupMobileNav() {
+    const openButton = document.querySelector('[data-nav-open]');
+    const closeButton = document.querySelector('[data-nav-close]');
+    const overlay = document.getElementById('mobile-nav-overlay');
+    const drawer = document.getElementById('mobile-nav-drawer');
+    if (!openButton || !closeButton || !overlay || !drawer) {
+      return;
+    }
+    if (drawer.dataset.bound === 'true') {
+      return;
+    }
+    drawer.dataset.bound = 'true';
+
+    let isLocked = false;
+    let previouslyFocused = null;
+
+    const close = () => {
+      if (isLocked) {
+        return;
+      }
+      isLocked = true;
+      if (previouslyFocused) {
+        previouslyFocused.focus({ preventScroll: true });
+      }
+      overlay.classList.remove('opacity-100');
+      overlay.classList.add('opacity-0');
+      drawer.classList.add('translate-x-full');
+      drawer.setAttribute('aria-hidden', 'true');
+      drawer.setAttribute('inert', '');
+      setTimeout(() => {
+        overlay.classList.add('hidden');
+        overlay.classList.remove('pointer-events-auto');
+        overlay.classList.add('pointer-events-none');
+        isLocked = false;
+        previouslyFocused = null;
+      }, TRANSITION_MS);
+    };
+
+    const open = () => {
+      if (isLocked) {
+        return;
+      }
+      previouslyFocused = document.activeElement instanceof HTMLElement ? document.activeElement : null;
+      overlay.classList.remove('hidden');
+      overlay.classList.add('pointer-events-auto');
+      overlay.classList.remove('pointer-events-none');
+      drawer.removeAttribute('inert');
+      drawer.setAttribute('aria-hidden', 'false');
+      requestAnimationFrame(() => {
+        overlay.classList.remove('opacity-0');
+        overlay.classList.add('opacity-100');
+        drawer.classList.remove('translate-x-full');
+        const firstLink = drawer.querySelector('a, button');
+        firstLink?.focus();
+
+        const handleKeydown = (event) => {
+          if (event.key === 'Escape' && drawer.getAttribute('aria-hidden') === 'false') {
+            close();
+          }
+        };
+        document.addEventListener('keydown', handleKeydown, { once: true });
+      });
+    };
+
+    openButton.onclick = open;
+    closeButton.onclick = close;
+    overlay.onclick = close;
+
+    const links = drawer.querySelectorAll('a');
+    links.forEach((link) => {
+      link.onclick = close;
+    });
+  }
+
+  document.addEventListener('astro:page-load', setupMobileNav);
+  document.addEventListener('astro:after-swap', setupMobileNav);
+</script>

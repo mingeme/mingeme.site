@@ -2,42 +2,35 @@
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import { ClientRouter } from 'astro:transitions';
-import '../styles/theme.css';
-import '../styles/globals.css';
+import '../styles/tailwind.css';
 
 const { title, description = `Mingeme's personal blog` } = Astro.props;
 ---
 
-<html lang="zh">
+<html lang="zh" class="scroll-smooth">
   <head>
     <meta charset="utf-8" />
     <meta name="description" content={description} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
     <meta name="generator" content={Astro.generator} />
-    <meta name="theme-color" content="" />
+    <meta name="theme-color" content="#f8f7f6" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;700;900&display=swap"
+      rel="stylesheet"
+    />
     <title>{title}</title>
     <ClientRouter />
   </head>
-  <body class="min-h-screen flex flex-col">
-    <Header />
-    <main class="flex-1 px-4">
-      <slot />
-    </main>
-    <Footer />
+  <body>
+    <div class="relative flex min-h-screen w-full flex-col overflow-x-hidden">
+      <Header />
+      <main class="flex-1">
+        <slot />
+      </main>
+      <Footer />
+    </div>
   </body>
 </html>
-
-<style is:global>
-  html {
-    font-family: sans-serif;
-  }
-
-  * {
-    box-sizing: border-box;
-  }
-
-  a {
-    --at-apply: decoration-none text-blue-600;
-  }
-</style>

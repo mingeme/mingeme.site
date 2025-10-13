@@ -2,39 +2,76 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 
-<BaseLayout title=`关于 | Mingeme's blog`>
-  <section class="text-base
-    prose
-    dark:prose-invert
-    prose-truegray
-    max-w-3xl
-    mx-auto">
-    <h2>关于我</h2>
-    <p>一位活跃的 "Web Worker"，全栈开发领域的爱好者，抽象达人，奇思妙想家。</p>
-    <h2>最近在做什么</h2>
-    <ul>
-      <li>沉迷996</li>
-      <li>跑步锻炼身体中🏃</li>
-      <li>学习新技能，可能剪辑，摄影，用 AI 造一些难看的视频</li>
-    </ul>
-    <h2>关于本站</h2>
-    <ul>
-      <li>
-        托管于 <a href="https://vercel.com" target="_blank" rel="noopener noreferrer">Vercel</a>
-      </li>
-      <li>
-        构建于 <a href="https://astro.build" target="_blank" rel="noopener noreferrer">Astro</a>
-        <a href="https://unocss.dev" target="_blank" rel="noopener noreferrer">Unocss</a>
-      </li>
-      <li>
-        域名服务 <a href="https://www.namecheap.com" target="_blank" rel="noopener noreferrer">Namecheap</a>
-      </li>
-      <li>
-        域名解析 <a href="https://cloudflare.com" target="_blank" rel="noopener noreferrer">Cloudflare</a>
-      </li>
-    </ul>
-    <p>
-      查看本博客<a href="http://github.com/mingeme/mingeme.site" target="_blank" rel="noopener noreferrer">仓库</a>
-    </p>
-  </section>
+<BaseLayout title={`关于 | Mingeme's blog`}>
+  <main class="flex justify-center px-4 py-12 sm:px-6 lg:px-8 lg:py-20">
+    <div class="w-full max-w-3xl text-[#211811]/90">
+      <h1 class="text-center text-4xl font-bold text-[#e66e19] sm:text-5xl">关于我</h1>
+      <div class="mt-12 space-y-8 text-lg leading-relaxed tracking-wide">
+        <p>
+          你好，我是 Mingeme，一名全栈工程师，也是一个不太执着的记录者。白天在互联网行业写代码，夜里把
+          各种想法写进文字里。喜欢折腾新技术，也对写作、设计和跑步保持好奇。
+        </p>
+        <p>
+          如果你想联系我，最好的方式是发邮件到
+          <a
+            class="text-[#e66e19] underline decoration-transparent transition hover:decoration-[#e66e19]"
+            href="mailto:mingeme00@outlook.com"
+          >
+            mingeme00@outlook.com
+          </a>
+          ，或者直接在 GitHub 上找到我。
+        </p>
+      </div>
+
+      <section class="mt-16 space-y-6 rounded-2xl border border-[#e66e19]/20 bg-white/80 p-8 shadow-sm">
+        <h2 class="text-2xl font-semibold text-[#211811]">正在或将要做的事</h2>
+        <p class="text-sm text-[#211811]/60">最近更新：2025年10月13日</p>
+        <ul class="space-y-3 text-base text-[#211811]/80">
+          <li>· 跟进 AI 动态的最新时事，保持对新事物的好奇。</li>
+          <li>· 坚持每周三次跑步，保持良好的身体状态。</li>
+          <li>· 学习摄影和剪辑，希望把记录扩展到声音和影像。</li>
+        </ul>
+      </section>
+
+      <section class="mt-12 space-y-6 rounded-2xl border border-[#e66e19]/20 bg-[#e66e19]/5 p-8">
+        <h2 class="text-2xl font-semibold text-[#211811]">关于本站</h2>
+        <ul class="space-y-3 text-base text-[#211811]/80">
+          <li>
+            · 部署在 <a
+              class="text-[#e66e19] underline"
+              href="https://vercel.com"
+              target="_blank"
+              rel="noopener noreferrer">Vercel</a
+            >
+          </li>
+          <li>
+            · 使用 <a
+              class="text-[#e66e19] underline"
+              href="https://astro.build"
+              target="_blank"
+              rel="noopener noreferrer">Astro</a
+            >
+            + <a
+              class="text-[#e66e19] underline"
+              href="https://tailwindcss.com"
+              target="_blank"
+              rel="noopener noreferrer">Tailwind CSS v4</a
+            >
+          </li>
+          <li>· 域名来自 Namecheap，解析交给 Cloudflare</li>
+          <li>
+            · 源码开源在
+            <a
+              class="text-[#e66e19] underline"
+              href="https://github.com/mingeme/mingeme.site"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              GitHub
+            </a>
+          </li>
+        </ul>
+      </section>
+    </div>
+  </main>
 </BaseLayout>

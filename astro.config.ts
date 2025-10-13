@@ -1,15 +1,22 @@
+import { transformerNotationDiff, transformerNotationHighlight } from '@shikijs/transformers';
+import tailwindcss from '@tailwindcss/vite';
 import umami from '@yeskunall/astro-umami';
 import { defineConfig } from 'astro/config';
-import UnoCSS from 'unocss/astro';
 
 // https://astro.build/config
 export default defineConfig({
   prefetch: true,
-  integrations: [UnoCSS(), umami({ id: '5b0216af-471b-4774-947c-3fa8879f0243' })],
+  integrations: [umami({ id: '5b0216af-471b-4774-947c-3fa8879f0243' })],
+  vite: {
+    plugins: [tailwindcss()],
+  },
   markdown: {
     shikiConfig: {
-      theme: 'one-dark-pro',
+      themes: {
+        light: 'github-light-default',
+      },
       wrap: true,
+      transformers: [transformerNotationDiff(), transformerNotationHighlight()],
     },
   },
 });

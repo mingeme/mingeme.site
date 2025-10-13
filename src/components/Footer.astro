@@ -2,37 +2,43 @@
 const currentYear = new Date().getFullYear();
 ---
 
-<footer class="mt-10 py-6 border-t border-border/40">
-  <div class="container mx-auto px-4 space-y-6">
-    <div class="flex items-center justify-center gap-4">
+<footer class="mt-20 border-t border-black/10">
+  <div class="mx-auto flex max-w-4xl flex-col items-center gap-6 px-4 py-12 text-center sm:px-6 lg:px-8">
+    <div class="flex items-center gap-6">
       <a
-        title="Github"
         href="https://github.com/mingeme"
         target="_blank"
-        class="text-sm text-muted-foreground transition hover:text-foreground"
         rel="noopener noreferrer"
+        class="text-[#211811]/60 transition-colors hover:text-[#e66e19]"
+        aria-label="GitHub"
       >
-        <span class="sr-only">Github</span>
-        <div class="w-6 h-6 text-muted-foreground hover:text-accent-foreground i-carbon-logo-github"></div>
+        <svg viewBox="0 0 24 24" class="h-6 w-6" fill="currentColor" aria-hidden="true">
+          <path
+            fill-rule="evenodd"
+            clip-rule="evenodd"
+            d="M12 2C6.48 2 2 6.64 2 12.3c0 4.5 2.865 8.31 6.84 9.66.5.1.68-.23.68-.5v-1.96c-2.78.62-3.39-1.38-3.39-1.38-.46-1.2-1.12-1.52-1.12-1.52-.92-.66.07-.65.07-.65 1.02.08 1.56 1.07 1.56 1.07.9 1.58 2.36 1.13 2.94.86.09-.67.35-1.13.63-1.39-2.22-.26-4.55-1.15-4.55-5.08 0-1.13.39-2.04 1.03-2.76-.1-.26-.45-1.31.1-2.74 0 0 .84-.28 2.75 1.05.8-.23 1.65-.35 2.5-.35.85 0 1.7.12 2.5.35 1.9-1.33 2.74-1.05 2.74-1.05.55 1.43.2 2.48.1 2.74.64.72 1.03 1.63 1.03 2.76 0 3.95-2.33 4.81-4.56 5.07.36.32.67.95.67 1.93v2.85c0 .27.18.6.69.5 3.97-1.35 6.83-5.16 6.83-9.66C22 6.64 17.52 2 12 2Z"
+          ></path>
+        </svg>
       </a>
       <a
-        title="微博"
         href="https://weibo.com/u/2140718862"
         target="_blank"
-        class="text-sm text-muted-foreground transition hover:text-foreground"
         rel="noopener noreferrer"
+        class="text-[#211811]/60 transition-colors hover:text-[#e66e19]"
+        aria-label="微博"
       >
-        <span class="sr-only">微博</span>
-        <div class="w-6 h-6 text-muted-foreground hover:text-accent-foreground i-mdi:sina-weibo"></div>
+        <svg width="24" height="24" fill="currentColor" viewBox="0 0 16 16">
+          <path
+            d="M10.878 1.093a4.23 4.23 0 0 1 4.031 1.305 4.22 4.22 0 0 1 .886 4.14v.001a.612.612 0 0 1-1.166-.377 3.01 3.01 0 0 0-3.495-3.873.611.611 0 1 1-.256-1.196M3.753 9.465c.548-1.11 1.972-1.74 3.233-1.411 1.304.338 1.971 1.568 1.437 2.764-.541 1.221-2.095 1.875-3.416 1.449-1.271-.411-1.812-1.67-1.254-2.802m2.658.567c.16.066.365-.009.458-.168.088-.16.03-.34-.129-.397-.156-.062-.353.013-.446.168-.09.154-.041.333.117.397m-1.607 1.314c.413.188.963.009 1.219-.4.252-.413.12-.883-.296-1.062-.41-.172-.94.005-1.194.402-.256.4-.135.874.271 1.06"
+          ></path>
+          <path
+            d="m12.014 7.238.005.001c.919.285 1.941.974 1.939 2.188 0 2.007-2.895 4.535-7.246 4.535C3.393 13.962 0 12.352 0 9.708c0-1.385.876-2.985 2.384-4.493C4.4 3.199 6.751 2.28 7.634 3.165c.39.392.427 1.065.177 1.87-.132.405.38.182.38.182 1.63-.682 3.051-.722 3.57.02.278.397.252.951-.004 1.594-.116.293.035.34.257.407m-10.4 3.101c.172 1.738 2.46 2.936 5.109 2.674 2.647-.26 4.656-1.883 4.482-3.623-.17-1.738-2.458-2.937-5.107-2.674-2.647.263-4.656 1.883-4.484 3.623m11.681-6.484a2.06 2.06 0 0 0-1.962-.634.526.526 0 1 0 .219 1.031 1.008 1.008 0 0 1 1.17 1.296.528.528 0 0 0 1.005.325 2.06 2.06 0 0 0-.432-2.018"
+          ></path>
+        </svg>
       </a>
     </div>
-    <div class="text-sm text-muted-foreground text-center">
-      <p>
-        © 2024-{currentYear} Mingeme. All rights reserved.
-      </p>
-      <p>
-        Powered by <a class="underline font-bold text-accent-foreground" href="https://astro.build/"> Astro</a>.
-      </p>
-    </div>
+    <p class="text-sm text-[#211811]/60">
+      © 2024-{currentYear} Mingeme. 保留所有权利。
+    </p>
   </div>
 </footer>

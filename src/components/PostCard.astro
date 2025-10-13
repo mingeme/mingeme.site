@@ -4,7 +4,6 @@ import utc from 'dayjs/plugin/utc';
 import timezone from 'dayjs/plugin/timezone';
 import localizedFormat from 'dayjs/plugin/localizedFormat';
 import 'dayjs/locale/zh-cn';
-import Badge from './ui/badge.astro';
 
 dayjs.extend(utc);
 dayjs.extend(timezone);
@@ -12,26 +11,31 @@ dayjs.extend(localizedFormat);
 dayjs.locale('zh-cn');
 
 const { url, frontmatter } = Astro.props;
+const formattedDate = dayjs(frontmatter.pubDate).tz('Asia/Shanghai').format('YYYY年M月D日');
+const tags = frontmatter.tags ?? [];
+const description = frontmatter.description ?? frontmatter.subtitle ?? '';
 ---
 
-<div class="overflow-hidden transition-all duration-300">
-  <a href={`/posts/${url}`}>
-    <div class="py-2">
-      <h2 class="text-xl font-bold text-foreground">
-        {frontmatter.title}
-      </h2>
-      <div class="flex flex-wrap gap-2 mt-2">
-        {
-          frontmatter.tags.map((tag: string) => (
-            <Badge variant="secondary" class="rounded-full text-xs font-medium">
-              {tag}
-            </Badge>
-          ))
-        }
-      </div>
-      <div class="mt-4 text-sm text-muted-foreground">
-        {dayjs(frontmatter.pubDate).tz('Asia/Shanghai').format('ll')}
-      </div>
-    </div>
-  </a>
-</div>
+<a
+  href={`/posts/${url}`}
+  class="block rounded-xl border border-transparent bg-white/90 p-6 transition duration-300 hover:-translate-y-1 hover:border-[#e66e19]/40 hover:bg-[#e66e19]/5"
+>
+  <div class="flex flex-col gap-3">
+    <h3 class="text-xl font-semibold text-[#211811] transition-colors">
+      {frontmatter.title}
+    </h3>
+    {description && <p class="text-sm leading-relaxed text-[#211811]/70">{description}</p>}
+    {
+      tags.length > 0 && (
+        <div class="flex flex-wrap gap-2">
+          {tags.map((tag: string) => (
+            <span class="rounded-full border border-[#e66e19]/20 bg-[#e66e19]/5 px-3 py-1 text-xs font-medium text-[#e66e19]">
+              #{tag}
+            </span>
+          ))}
+        </div>
+      )
+    }
+    <p class="text-sm text-[#211811]/50">{formattedDate}</p>
+  </div>
+</a>

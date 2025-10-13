@@ -1,0 +1,111 @@
+@import 'tailwindcss';
+
+@layer base {
+  body {
+    font-family: 'Noto Serif SC', serif;
+    background-color: #f8f7f6;
+    color: #211811;
+    @apply antialiased transition-colors duration-300;
+  }
+
+  a {
+    @apply transition-colors duration-200;
+  }
+}
+
+@layer utilities {
+  .apple-blur {
+    backdrop-filter: blur(12px);
+    background-color: rgba(255, 255, 255, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+}
+
+@layer components {
+  .markdown {
+    @apply max-w-none space-y-6 text-lg leading-8 text-[#211811]/90;
+  }
+
+  .markdown h1 {
+    @apply text-4xl font-bold text-[#211811];
+  }
+
+  .markdown h2 {
+    @apply mt-12 text-3xl font-semibold text-[#211811];
+  }
+
+  .markdown h3 {
+    @apply mt-10 text-2xl font-semibold text-[#211811];
+  }
+
+  .markdown h4 {
+    @apply mt-8 text-xl font-semibold text-[#211811];
+  }
+
+  .markdown p {
+    @apply leading-8 text-[#211811]/90;
+  }
+
+  .markdown strong {
+    @apply font-semibold text-[#211811];
+  }
+
+  .markdown em {
+    @apply italic;
+  }
+
+  .markdown a {
+    @apply text-[#e66e19] underline decoration-transparent transition hover:decoration-[#e66e19];
+  }
+
+  .markdown ul {
+    @apply list-disc space-y-2 pl-6 text-[#211811]/90;
+  }
+
+  .markdown ol {
+    @apply list-decimal space-y-2 pl-6 text-[#211811]/90;
+  }
+
+  .markdown li::marker {
+    @apply text-[#e66e19];
+  }
+
+  .markdown blockquote {
+    @apply border-l-4 border-[#e66e19]/40 bg-[#e66e19]/5 px-6 py-4 text-[#211811]/80;
+  }
+
+  .markdown :not(pre) > code {
+    @apply rounded bg-[#e66e19]/10 px-1.5 py-0.5 text-sm text-[#c8601d];
+  }
+
+  .markdown pre {
+    @apply overflow-x-auto rounded-xl border border-[#211811]/10 p-4 text-sm leading-7;
+    background: var(--astro-code-color-background, #f0f0f0);
+    color: var(--astro-code-color-text, #211811);
+  }
+
+  .markdown pre code {
+    @apply block min-w-full bg-transparent p-0 text-sm leading-7 text-inherit;
+  }
+
+  .markdown hr {
+    @apply my-10 border-t border-[#211811]/10;
+  }
+
+  .markdown table {
+    @apply w-full table-auto border-collapse overflow-hidden rounded-xl border border-[#211811]/10 text-left;
+  }
+
+  .markdown thead {
+    @apply bg-[#e66e19]/10 text-[#211811];
+  }
+
+  .markdown th,
+  .markdown td {
+    @apply border-b border-[#211811]/10 px-4 py-3 align-top;
+  }
+
+  .markdown img {
+    @apply my-6 w-full rounded-xl border border-[#211811]/10;
+  }
+}

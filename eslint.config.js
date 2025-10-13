@@ -20,7 +20,7 @@ export default antfu({
 
   typescript: true,
   astro: true,
-  unocss: true,
+  unocss: false,
 
   // Disable jsonc and yaml support
   jsonc: false,

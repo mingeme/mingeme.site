@@ -14,101 +14,118 @@ dayjs.extend(localizedFormat);
 dayjs.locale('zh-cn');
 
 const { title, pubDate, headings } = Astro.props;
-const allHeadings = [
-  {
-    depth: 1,
-    slug: 'title',
-    text: title,
-  },
-  ...headings,
-];
+const displayDate = dayjs(pubDate).tz('Asia/Shanghai').format('YYYY年M月D日 dddd HH:mm');
+
+const tocHeadings = headings.length
+  ? [
+      {
+        depth: 1,
+        slug: 'article-title',
+        text: title,
+      },
+      ...headings,
+    ]
+  : [];
 ---
 
 <BaseLayout title={`${title} | Mingeme's blog`}>
   <ImageViewer />
-  <article class="py-8 md:py-12">
-    <div class="container px-4 mx-auto">
-      <div class="max-w-3xl mx-auto">
-        <!-- Post Header -->
-        <div class="mb-8 text-center">
-          <h1 class="text-4xl md:text-5xl font-medium mb-6 tracking-tight">
+  <article class="px-4 py-12 sm:px-6 lg:px-8 lg:py-16">
+    <div class="mx-auto flex w-full max-w-5xl flex-col gap-12 lg:flex-row">
+      <div class="flex-1 lg:min-w-0">
+        <header class="mb-12">
+          <p class="text-sm text-[#211811]/60">{displayDate}</p>
+          <h1 id="article-title" class="mt-4 text-4xl font-bold leading-tight text-[#211811] sm:text-5xl">
             {title}
           </h1>
-          <div class="flex items-center justify-center space-x-2 mb-3">
-            <span class="text-xs text-muted-foreground">
-              {dayjs(pubDate).tz('Asia/Shanghai').format('lll')}
-            </span>
-          </div>
-        </div>
-
-        <!-- Post Content -->
-        <div class="prose prose-lg dark:prose-invert max-w-none">
+        </header>
+        <div class="markdown">
           <slot />
         </div>
       </div>
+      {
+        tocHeadings.length > 1 && (
+          <aside class="lg:w-64 lg:flex-shrink-0">
+            <TableOfContents headings={tocHeadings} />
+          </aside>
+        )
+      }
     </div>
   </article>
 </BaseLayout>
 
 <script is:inline>
-  /**
-   * Attaches copy buttons to code blocks in the document,
-   * allowing users to copy code easily.
-   */
+  const copySvg = `
+    <svg viewBox="0 0 24 24" class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="1.6">
+      <path d="M9 9.75V6c0-.69.56-1.25 1.25-1.25h7.5C18.44 4.75 19 5.31 19 6v7.5c0 .69-.56 1.25-1.25 1.25H14.5" stroke-linecap="round" stroke-linejoin="round"/>
+      <rect x="5" y="9.75" width="9.5" height="9.5" rx="1.25" />
+    </svg>
+  `;
+
+  const checkSvg = `
+    <svg viewBox="0 0 24 24" class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="1.8">
+      <path d="m5.5 12.5 4 4 9-9" stroke-linecap="round" stroke-linejoin="round" />
+    </svg>
+  `;
+
   function attachCopyButtons() {
-    const codeBlocks = Array.from(document.querySelectorAll('pre'));
+    const codeBlocks = Array.from(document.querySelectorAll('article pre'));
 
     for (const codeBlock of codeBlocks) {
+      if (codeBlock.dataset.hasCopyButton) {
+        continue;
+      }
+      codeBlock.dataset.hasCopyButton = 'true';
+
       const wrapper = document.createElement('div');
       wrapper.style.position = 'relative';
 
       const copyButton = document.createElement('button');
       copyButton.className =
-        'absolute right-3 top-3 rounded bg-background text-foreground p-1.5 text-xs leading-4 font-medium border-1 border-border hover:bg-muted transition-colors';
+        'absolute right-3 top-3 flex items-center justify-center rounded-full border border-[#211811]/10 bg-white/80 p-2 text-xs text-[#211811]/70 shadow-sm transition hover:bg-white';
       copyButton.setAttribute('aria-label', '复制代码');
       copyButton.setAttribute('title', '复制代码');
-
-      // 添加复制图标
-      const copyIcon = document.createElement('div');
-      copyIcon.className = 'i-carbon-copy w-4 h-4';
-      copyButton.appendChild(copyIcon);
+      copyButton.innerHTML = copySvg;
 
       codeBlock.setAttribute('tabindex', '0');
       codeBlock.appendChild(copyButton);
 
-      // wrap codebock with relative parent element
-      codeBlock.parentNode.insertBefore(wrapper, codeBlock);
-      wrapper.appendChild(codeBlock);
+      if (codeBlock.parentNode) {
+        codeBlock.parentNode.insertBefore(wrapper, codeBlock);
+        wrapper.appendChild(codeBlock);
+      }
 
       copyButton.addEventListener('click', async () => {
-        await copyCode(codeBlock, copyButton, copyIcon);
+        await copyCode(codeBlock, copyButton);
       });
     }
-
-    async function copyCode(block, button, icon) {
-      const code = block.querySelector('code');
-      const text = code.textContent;
-
-      await navigator.clipboard.writeText(text);
-
-      // 选中代码块
-      const range = document.createRange();
-      range.selectNodeContents(code);
-      const selection = window.getSelection();
-      selection.removeAllRanges();
-      selection.addRange(range);
-
-      // 替换图标为复制成功图标
-      icon.className = 'i-carbon-checkmark w-4 h-4';
-      button.classList.add('text-accent');
-
-      setTimeout(() => {
-        // 恢复原始图标
-        icon.className = 'i-carbon-copy w-4 h-4';
-        button.classList.remove('text-accent');
-      }, 1500);
-    }
   }
+
+  async function copyCode(block, button) {
+    const code = block.querySelector('code');
+    if (!code) {
+      return;
+    }
+    const text = code.textContent ?? '';
+
+    await navigator.clipboard.writeText(text);
+
+    const range = document.createRange();
+    range.selectNodeContents(code);
+    const selection = window.getSelection();
+    selection?.removeAllRanges();
+    selection?.addRange(range);
+
+    button.innerHTML = checkSvg;
+    button.classList.add('text-[#e66e19]');
+
+    setTimeout(() => {
+      button.innerHTML = copySvg;
+      button.classList.remove('text-[#e66e19]');
+      selection?.removeAllRanges();
+    }, 1500);
+  }
+
   attachCopyButtons();
   document.addEventListener('astro:after-swap', attachCopyButtons);
 </script>

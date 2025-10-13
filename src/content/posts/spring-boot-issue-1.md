@@ -40,9 +40,9 @@ public class DemoApplication {
 
 注：
 
-- 如果使用的是 JPA 则对应 OpenEntityManagerInViewFilter，Hibernate 对应 OpenSessionInViewFilter
+- 如果使用的是 `JPA` 则对应 `OpenEntityManagerInViewFilter`，`Hibernate` 对应 `OpenSessionInViewFilter`
 
 疑问：
 
-- registrationBean.setOrder(5)，order为什么是5
-- OpenSessionInViewInterceptor & OpenSessionInViewFilter, OpenEntityManagerInViewInterceptor & OpenEntityManagerInViewFilter 这几个类的区别以及使用的场景
+- `registrationBean.setOrder(5)`，order为什么是5
+- `OpenSessionInViewInterceptor` & `OpenSessionInViewFilter`, `OpenEntityManagerInViewInterceptor` & `OpenEntityManagerInViewFilter` 这几个类的区别以及使用的场景
