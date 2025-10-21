@@ -1,0 +1,8 @@
+:80 {
+	root /srv
+	encode gzip
+	file_server {
+		hide .DS_Store
+	}
+	try_files {path} {path}/ /index.html
+}
