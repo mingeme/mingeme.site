@@ -1,6 +1,6 @@
 ---
 title: Spring Boot 中 spring.jpa.open-in-view 使用踩坑
-pubDate: '2020-08-26T12:25:16+08:00'
+date: '2020-08-26T12:25:16+08:00'
 public: true
 tags:
   - spring-boot

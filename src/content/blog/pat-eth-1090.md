@@ -1,6 +1,6 @@
 ---
 title: PAT 乙级 1090 C语言
-pubDate: '2018-10-09T22:20:14+08:00'
+date: '2018-10-09T22:20:14+08:00'
 public: true
 tags:
   - pat

@@ -1,6 +1,6 @@
 ---
 title: 我是如何自建图床服务的
-pubDate: '2025-01-05T22:00:43+08:00'
+date: '2025-01-05T22:00:43+08:00'
 public: true
 tags:
   - svelte

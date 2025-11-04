@@ -1,18 +1,17 @@
-// 从 `astro:content` 导入辅助工具
 import { defineCollection, z } from 'astro:content';
-// 为每一个集合定义一个 `type` 和 `schema`
-const postsCollection = defineCollection({
+
+const blog = defineCollection({
   type: 'content',
   schema: z.object({
     title: z.string(),
-    pubDate: z.string().datetime({ offset: true }),
     description: z.string().optional(),
+    date: z.coerce.date(),
+    draft: z.boolean().optional(),
+    // Custom fields
     public: z.boolean().default(true),
     misc: z.boolean().default(false),
     tags: z.array(z.string()).optional(),
   }),
 });
-// 导出一个单独的 `collections` 对象来注册你的集合
-export const collections = {
-  posts: postsCollection,
-};
+
+export const collections = { blog };

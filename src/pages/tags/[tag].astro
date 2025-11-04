@@ -1,14 +1,16 @@
 ---
 import { getCollection } from 'astro:content';
-import BaseLayout from '../../layouts/BaseLayout.astro';
-import PostCard from '../../components/PostCard.astro';
+import PageLayout from '@/layouts/PageLayout.astro';
+import Container from '@/components/Container.astro';
+import ArrowCard from '@/components/ArrowCard.astro';
+import { TAGS } from '@/consts';
 
 export async function getStaticPaths() {
-  const posts = await getCollection('posts');
+  const posts = await getCollection('blog');
   const tagSet = new Set<string>();
 
   for (const post of posts) {
-    if (!post.data.public) continue;
+    if (!post.data.public || post.data.draft) continue;
     const tags = Array.isArray(post.data.tags) ? post.data.tags : [];
     for (const tag of tags) {
       if (typeof tag === 'string' && tag.length > 0) {
@@ -25,33 +27,48 @@ export async function getStaticPaths() {
 
 const tagName = Astro.props?.tag ?? decodeURIComponent(Astro.params.tag ?? '');
 
-const posts = (await getCollection('posts'))
-  .filter((post) => post.data.public && Array.isArray(post.data.tags) && post.data.tags.includes(tagName))
-  .sort((a, b) => new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime());
+const posts = (await getCollection('blog'))
+  .filter(
+    (post) =>
+      post.data.public &&
+      !post.data.draft &&
+      !post.data.misc &&
+      Array.isArray(post.data.tags) &&
+      post.data.tags.includes(tagName),
+  )
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 
-const title = `${tagName} | 标签归档`;
+const title = `${tagName} | ${TAGS.TITLE}`;
 ---
 
-<BaseLayout title={title}>
-  <div class="mx-auto w-full max-w-4xl space-y-10 px-4 py-12 sm:px-6 lg:px-8 lg:py-16">
-    <section class="space-y-3 text-center">
-      <p class="text-sm text-text-light/60">标签</p>
-      <h1 class="text-3xl font-bold text-primary sm:text-4xl">{tagName}</h1>
-      <p class="text-base text-text-light/70">
-        共 {posts.length} 篇文章
-      </p>
-    </section>
+<PageLayout title={title} description={`标签 ${tagName} 下的所有文章`}>
+  <Container>
+    <div class="space-y-10">
+      <div class="animate space-y-2 text-center">
+        <p class="text-sm opacity-75">标签</p>
+        <h1 class="text-3xl font-semibold text-black dark:text-white">
+          {tagName}
+        </h1>
+        <p class="text-sm opacity-75">
+          共 {posts.length} 篇文章
+        </p>
+      </div>
 
-    {
-      posts.length === 0 ? (
-        <p class="text-center text-sm text-text-light/60">暂时还没有归档相关文章。</p>
-      ) : (
-        <div class="space-y-4">
-          {posts.map((post) => (
-            <PostCard url={post.slug} frontmatter={post.data} />
-          ))}
-        </div>
-      )
-    }
-  </div>
-</BaseLayout>
+      {
+        posts.length === 0 ? (
+          <p class="animate text-center text-sm opacity-75">暂时还没有相关文章。</p>
+        ) : (
+          <div class="animate space-y-4">
+            <ul class="flex flex-col gap-4">
+              {posts.map((post) => (
+                <li>
+                  <ArrowCard entry={post} />
+                </li>
+              ))}
+            </ul>
+          </div>
+        )
+      }
+    </div>
+  </Container>
+</PageLayout>

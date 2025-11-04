@@ -1,6 +1,6 @@
 ---
 title: 2024年度总结《找自己》
-pubDate: '2025-01-24T23:15:43+08:00'
+date: '2025-01-24T23:15:43+08:00'
 public: true
 misc: true
 tags:
