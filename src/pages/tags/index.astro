@@ -39,7 +39,11 @@ const tags = Array.from(tagCounter.entries())
       ) : (
         <div class="animate flex flex-wrap gap-3">
           {tags.map((tag) => (
-            <a href={tag.href} class="theme-button text-sm">
+            <a
+              href={tag.href}
+              class="font-meta rounded-full border px-3 py-1 text-xs text-ink no-underline transition-colors duration-200 hover:border-[var(--accent)] hover:text-[var(--accent)]"
+              style="border-color: var(--line);"
+            >
               <span>{tag.name}</span>
               <span class="ml-1.5 opacity-60">({tag.count})</span>
             </a>
