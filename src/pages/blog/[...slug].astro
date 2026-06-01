@@ -23,18 +23,18 @@ const { Content } = await render(post);
 <PageLayout title={post.data.title} description={post.data.description || ''}>
   <Container>
     <div class="animate grid gap-8 md:grid-cols-[1fr_13rem] md:items-start">
-        <div>
-          <h1 class="max-w-4xl text-4xl font-semibold leading-tight tracking-[-0.06em] text-ink sm:text-6xl">
-            {post.data.title}
-          </h1>
-          {post.data.description && <p class="mt-6 max-w-2xl text-xl leading-8">{post.data.description}</p>}
-        </div>
+      <div>
+        <h1 class="max-w-4xl text-4xl font-semibold leading-tight tracking-[-0.06em] text-ink sm:text-6xl">
+          {post.data.title}
+        </h1>
+        {post.data.description && <p class="mt-6 max-w-2xl text-xl leading-8">{post.data.description}</p>}
+      </div>
 
-        <div class="font-meta text-xs leading-7 text-faint md:pt-3">
-          <div><FormattedDate date={post.data.date} /></div>
-          <div>{readingTime(post.body ?? '')}</div>
-          {post.data.tags?.length ? <div>{post.data.tags.map((tag) => `#${tag}`).join(' ')}</div> : null}
-        </div>
+      <div class="font-meta text-xs leading-7 text-faint md:pt-3">
+        <div><FormattedDate date={post.data.date} /></div>
+        <div>{readingTime(post.body ?? '')}</div>
+        {post.data.tags?.length ? <div>{post.data.tags.map((tag) => `#${tag}`).join(' ')}</div> : null}
+      </div>
     </div>
 
     <article class="animate prose-page mt-16">
