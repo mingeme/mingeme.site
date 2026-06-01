@@ -19,13 +19,13 @@ const { title, description, image = '/favicon.svg' } = Astro.props;
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 <meta name="generator" content={Astro.generator} />
-<meta name="theme-color" content="#fdfdfd" />
+<meta name="theme-color" content="#f7f4ed" />
 
 <!-- Font preloads -->
 <link rel="preconnect" href="https://fonts.loli.net" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.loli.net/css2?family=Noto+Serif+SC:wght@400;500;700;900&display=swap" rel="stylesheet" />
-<!-- System fonts are used for sans-serif, no web font loading needed -->
+<!-- System fonts are used for sans-serif and mono fallbacks. -->
 
 <!-- Canonical URL -->
 <link rel="canonical" href={canonicalURL} />

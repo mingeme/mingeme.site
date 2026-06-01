@@ -1,60 +1,29 @@
 ---
-import { type CollectionEntry, getCollection } from 'astro:content';
+import { getCollection } from 'astro:content';
 import PageLayout from '@/layouts/PageLayout.astro';
 import Container from '@/components/Container.astro';
 import ArrowCard from '@/components/ArrowCard.astro';
 import { MISC } from '@/consts';
 
-const data = (await getCollection('blog'))
+const posts = (await getCollection('blog'))
   .filter((post) => post.data.public && post.data.misc && !post.data.draft)
   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
-
-type Acc = {
-  [year: string]: CollectionEntry<'blog'>[];
-};
-
-const posts = data.reduce((acc: Acc, post) => {
-  const year = post.data.date.getFullYear().toString();
-  if (!acc[year]) {
-    acc[year] = [];
-  }
-  acc[year].push(post);
-  return acc;
-}, {});
-
-const years = Object.keys(posts).sort((a, b) => parseInt(b) - parseInt(a));
 ---
 
 <PageLayout title={MISC.TITLE} description={MISC.DESCRIPTION}>
   <Container>
-    <div class="space-y-10">
-      <div class="animate text-center">
-        <h1 class="text-3xl font-semibold text-black dark:text-white">杂记</h1>
-        <p class="mt-4 text-sm opacity-75">这里收录日常里不成体系的思考、速记和灵感草稿，节奏更随意，也更个人。</p>
-      </div>
-
-      {
-        years.length === 0 ? (
-          <p class="animate text-center text-sm opacity-75">暂时还没有内容，等我写点什么。</p>
-        ) : (
-          <div class="space-y-4">
-            {years.map((year) => (
-              <section class="animate space-y-4">
-                <div class="font-semibold text-black dark:text-white">{year}</div>
-                <div>
-                  <ul class="flex flex-col gap-4">
-                    {posts[year].map((post) => (
-                      <li>
-                        <ArrowCard entry={post} />
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </section>
-            ))}
-          </div>
-        )
-      }
-    </div>
+    {
+      posts.length === 0 ? (
+        <p class="animate font-meta text-sm text-faint">暂时还没有内容。</p>
+      ) : (
+        <ol class="animate">
+          {posts.map((post) => (
+            <li>
+              <ArrowCard entry={post} />
+            </li>
+          ))}
+        </ol>
+      )
+    }
   </Container>
 </PageLayout>

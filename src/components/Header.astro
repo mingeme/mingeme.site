@@ -1,58 +1,24 @@
 ---
 import Container from '@/components/Container.astro';
-import Link from '@/components/Link.astro';
 import { SITE } from '@/consts';
 ---
 
-<header>
+<header class="site-header">
   <Container>
-    <div class="flex flex-wrap gap-y-2 justify-between items-center">
-      <Link href="/" underline={false}>
-        <div class="font-semibold">
-          {SITE.NAME}
-        </div>
-      </Link>
-      <nav class="flex gap-1 items-center">
-        <Link href="/blog"> 归档 </Link>
-        <span>
-          {`/`}
-        </span>
-        <Link href="/about"> 关于 </Link>
-        <span>
-          {`/`}
-        </span>
-        <Link href="/tags"> 标签 </Link>
-        <span>
-          {`/`}
-        </span>
-        <Link href="/misc"> 杂记 </Link>
-        <span class="mx-2">
-          {`|`}
-        </span>
-        <button
-          id="light-theme-button"
-          class="px-2 py-1 rounded hover:bg-black/5 dark:hover:bg-white/5 transition-colors"
-          aria-label="浅色模式"
-          title="浅色模式"
-        >
-          ☀️
-        </button>
-        <button
-          id="dark-theme-button"
-          class="px-2 py-1 rounded hover:bg-black/5 dark:hover:bg-white/5 transition-colors"
-          aria-label="深色模式"
-          title="深色模式"
-        >
-          🌙
-        </button>
-        <button
-          id="system-theme-button"
-          class="px-2 py-1 rounded hover:bg-black/5 dark:hover:bg-white/5 transition-colors"
-          aria-label="跟随系统"
-          title="跟随系统"
-        >
-          💻
-        </button>
+    <div class="flex flex-wrap gap-x-8 gap-y-3 justify-between items-center text-sm font-meta">
+      <a href="/" class="wordmark" aria-label={SITE.NAME}>
+        HENMIHU
+      </a>
+
+      <nav class="flex flex-wrap gap-x-3 gap-y-2 items-center">
+        <a class="nav-link" href="/blog">/手记</a>
+        <a class="nav-link" href="/misc">/边角料</a>
+        <a class="nav-link" href="/tags">/标本</a>
+        <a class="nav-link" href="/about">/此处</a>
+        <span class="hidden text-faint sm:inline">|</span>
+        <button id="light-theme-button" class="theme-button" aria-label="浅色模式" title="浅色模式">light</button>
+        <button id="dark-theme-button" class="theme-button" aria-label="深色模式" title="深色模式">dark</button>
+        <button id="system-theme-button" class="theme-button" aria-label="跟随系统" title="跟随系统">auto</button>
       </nav>
     </div>
   </Container>

@@ -43,32 +43,18 @@ const title = `${tagName} | ${TAGS.TITLE}`;
 
 <PageLayout title={title} description={`标签 ${tagName} 下的所有文章`}>
   <Container>
-    <div class="space-y-10">
-      <div class="animate space-y-2 text-center">
-        <p class="text-sm opacity-75">标签</p>
-        <h1 class="text-3xl font-semibold text-black dark:text-white">
-          {tagName}
-        </h1>
-        <p class="text-sm opacity-75">
-          共 {posts.length} 篇文章
-        </p>
-      </div>
-
-      {
-        posts.length === 0 ? (
-          <p class="animate text-center text-sm opacity-75">暂时还没有相关文章。</p>
-        ) : (
-          <div class="animate space-y-4">
-            <ul class="flex flex-col gap-4">
-              {posts.map((post) => (
-                <li>
-                  <ArrowCard entry={post} />
-                </li>
-              ))}
-            </ul>
-          </div>
-        )
-      }
-    </div>
+    {
+      posts.length === 0 ? (
+        <p class="animate font-meta text-sm text-faint">暂时还没有相关文章。</p>
+      ) : (
+        <ol class="animate">
+          {posts.map((post, index) => (
+            <li>
+              <ArrowCard entry={post} index={index} />
+            </li>
+          ))}
+        </ol>
+      )
+    }
   </Container>
 </PageLayout>

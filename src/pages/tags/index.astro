@@ -33,31 +33,19 @@ const tags = Array.from(tagCounter.entries())
 
 <PageLayout title={TAGS.TITLE} description={TAGS.DESCRIPTION}>
   <Container>
-    <div class="space-y-10">
-      <div class="animate text-center">
-        <h1 class="text-3xl font-semibold text-black dark:text-white">标签</h1>
-        <p class="mt-4 text-sm opacity-75">
-          按标签快速浏览文章。目前共收录 <span class="font-semibold text-black dark:text-white">{tags.length}</span> 个标签。
-        </p>
-      </div>
-
-      {
-        tags.length === 0 ? (
-          <p class="animate text-center text-sm opacity-75">暂时还没有标签，期待新的内容出现。</p>
-        ) : (
-          <div class="animate flex flex-wrap justify-center gap-3">
-            {tags.map((tag) => (
-              <a
-                href={tag.href}
-                class="px-4 py-2 rounded-lg border border-black/15 dark:border-white/20 hover:bg-black/5 dark:hover:bg-white/5 transition-colors duration-300"
-              >
-                <span class="font-medium text-black dark:text-white">{tag.name}</span>
-                <span class="ml-1.5 text-sm opacity-60">({tag.count})</span>
-              </a>
-            ))}
-          </div>
-        )
-      }
-    </div>
+    {
+      tags.length === 0 ? (
+        <p class="animate font-meta text-sm text-faint">暂时还没有标签。</p>
+      ) : (
+        <div class="animate flex flex-wrap gap-3">
+          {tags.map((tag) => (
+            <a href={tag.href} class="theme-button text-sm">
+              <span>{tag.name}</span>
+              <span class="ml-1.5 opacity-60">({tag.count})</span>
+            </a>
+          ))}
+        </div>
+      )
+    }
   </Container>
 </PageLayout>
