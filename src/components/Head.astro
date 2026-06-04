@@ -1,6 +1,5 @@
 ---
 import '../styles/global.css';
-import { ClientRouter } from 'astro:transitions';
 import { SITE } from '@/consts';
 import SpeedInsights from '@vercel/speed-insights/astro';
 
@@ -21,12 +20,6 @@ const { title, description, image = '/favicon.svg' } = Astro.props;
 <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 <meta name="generator" content={Astro.generator} />
 <meta name="theme-color" content="#121416" />
-
-<!-- Font preloads -->
-<link rel="preconnect" href="https://fonts.loli.net" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.loli.net/css2?family=Noto+Serif+SC:wght@400;500;700;900&display=swap" rel="stylesheet" />
-<!-- System fonts are used for sans-serif and mono fallbacks. -->
 
 <!-- Canonical URL -->
 <link rel="canonical" href={canonicalURL} />
@@ -50,25 +43,12 @@ const { title, description, image = '/favicon.svg' } = Astro.props;
 <meta property="twitter:description" content={description} />
 <meta property="twitter:image" content={new URL(image, Astro.url)} />
 
-<ClientRouter />
-
 <!-- RSS Link -->
 <link rel="alternate" type="application/rss+xml" title={SITE.NAME} href={new URL('rss.xml', Astro.site)} />
-
-<script>
-  import type { TransitionBeforeSwapEvent } from 'astro:transitions/client';
-
-  document.addEventListener('astro:before-swap', (e) => {
-    [...(e as TransitionBeforeSwapEvent).newDocument.head.querySelectorAll('link[as="font"]')].forEach((link) =>
-      link.remove(),
-    );
-  });
-</script>
 
 <script is:inline>
   function init() {
     onScroll();
-    animate();
 
     const backToTop = document.getElementById('back-to-top');
     backToTop?.addEventListener('click', (event) => scrollToTop(event));
@@ -77,16 +57,6 @@ const { title, description, image = '/favicon.svg' } = Astro.props;
     backToPrev?.addEventListener('click', () => window.history.back());
 
     document.addEventListener('scroll', onScroll);
-  }
-
-  function animate() {
-    const animateElements = document.querySelectorAll('.animate');
-
-    animateElements.forEach((element, index) => {
-      setTimeout(() => {
-        element.classList.add('show');
-      }, index * 150);
-    });
   }
 
   function onScroll() {

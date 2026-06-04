@@ -3,7 +3,7 @@
 
 @theme {
   --font-sans: 'PingFang SC', 'Noto Sans SC', ui-sans-serif, system-ui, sans-serif;
-  --font-serif: 'Noto Serif SC', 'Lora', ui-serif, Georgia, serif;
+  --font-serif: ui-serif, Georgia, 'Times New Roman', serif;
   --font-mono: 'JetBrains Mono', 'Maple Mono', 'SFMono-Regular', ui-monospace, monospace;
   --color-scheme: light dark;
 }
@@ -15,7 +15,7 @@
   --surface: #121416;
   --text: #f2f1ec;
   --muted: #b7b5ad;
-  --faint: #807d75;
+  --faint: #9f9b91;
   --line: #f2f1ec;
   --accent: #b7ff2a;
   --accent-ink: #101010;
@@ -153,11 +153,6 @@ article :where(code) {
 }
 
 .animate {
-  @apply opacity-0 translate-y-3;
-  @apply transition-all duration-700 ease-out;
-}
-
-.animate.show {
   @apply opacity-100 translate-y-0;
 }
 
