@@ -58,6 +58,24 @@ footer {
   @apply py-5 text-sm;
 }
 
+.about-signature {
+  max-width: 34rem;
+}
+
+.about-signature__label {
+  margin-bottom: 0.75rem;
+  color: var(--faint);
+  font-size: 0.72rem;
+  letter-spacing: 0.2em;
+}
+
+.about-signature__text {
+  color: var(--text);
+  font-size: clamp(1rem, 0.4vw + 0.95rem, 1.08rem);
+  line-height: 1.9;
+  letter-spacing: 0.01em;
+}
+
 article {
   @apply max-w-full prose prose-invert prose-lg prose-img:mx-auto prose-img:my-auto;
   @apply prose-headings:font-semibold;
@@ -150,6 +168,17 @@ article :where(code) {
 
 .nav-link:hover {
   color: var(--accent);
+}
+
+.nav-link-underlined {
+  text-decoration: underline;
+  text-decoration-color: var(--line);
+  text-underline-offset: 0.18em;
+  transition: color 180ms ease, text-decoration-color 180ms ease;
+}
+
+.nav-link-underlined:hover {
+  text-decoration-color: var(--accent);
 }
 
 .animate {
